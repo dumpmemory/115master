@@ -117,15 +117,16 @@ const handlePlay = async (item: Entity.PlaylistItem) => {
 // 加载数据
 const loadData = async (isFirst = true) => {
 	await DataVideoSources.fetch(params.pickCode.value);
-	await Drive115Instance.fakeVodAuthPickcode(params.pickCode.value);
-	DataFileInfo.execute(0, params.pickCode.value);
-	isFirst && DataPlaylist.execute(0, params.cid.value, params.pickCode.value);
-	DataThumbnails.initialize(DataVideoSources.list.value);
-	if (params.avNumber.value) {
-		DataMovieInfo.value.javDBState.execute(0, params.avNumber.value);
-		DataMovieInfo.value.javBusState.execute(0, params.avNumber.value);
-		DataSubtitles.execute(0, params.pickCode.value, params.avNumber.value);
-	}
+	Drive115Instance.fakeVodAuthPickcode(params.pickCode.value).then(() => {
+		DataFileInfo.execute(0, params.pickCode.value);
+		isFirst && DataPlaylist.execute(0, params.cid.value, params.pickCode.value);
+		if (params.avNumber.value) {
+			DataMovieInfo.value.javDBState.execute(0, params.avNumber.value);
+			DataMovieInfo.value.javBusState.execute(0, params.avNumber.value);
+			DataSubtitles.execute(0, params.pickCode.value, params.avNumber.value);
+		}
+		DataThumbnails.initialize(DataVideoSources.list.value);
+	});
 };
 
 // 设置标题

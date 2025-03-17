@@ -7,9 +7,9 @@ import {
 	WEB_API_URL_115,
 } from "../../constants/115";
 import { qualityCodeMap } from "../../constants/quality";
-import { USER_AGENT_115 } from "../../constants/useragent";
 import type { M3u8Item } from "../../types/player";
 import { AppLogger } from "../logger";
+import { FetchRequest } from "../request/fetchRequest";
 import type { IRequest } from "../request/types";
 import type { NormalApi, ProApi, VodApi, WebApi } from "./api";
 import { Crypto115 } from "./crypto";
@@ -37,9 +37,11 @@ export class Drive115Core {
 	private PRO_API_URL = PRO_API_URL_115;
 	private VOD_URL_115 = VOD_URL_115;
 	private verifying = false;
+	fetchRequest: FetchRequest;
 
 	constructor(protected iRequest: IRequest) {
 		this.crypto115 = new Crypto115();
+		this.fetchRequest = new FetchRequest();
 	}
 
 	private verifyVod(pickcode: string) {
@@ -57,20 +59,17 @@ export class Drive115Core {
 		await this.iRequest.get(
 			new URL(`?pickcode=${pickcode}`, this.VOD_URL_115).href,
 			{
-				headers: {
-					"User-Agent": USER_AGENT_115,
-				},
 				responseType: "document",
 				redirect: "follow",
 			},
 		);
 	}
 
-	// 获取原文件地址
+	// 获取原文件地址 (小文件下载用)
 	private async getDownloadUrlByNormal(
 		pickcode: string,
 	): Promise<DownloadResult> {
-		const response = await this.iRequest.get(
+		const response = await this.fetchRequest.get(
 			new URL(`/files/download?pickcode=${pickcode}`, this.WEB_API_URL).href,
 			{
 				headers: {
@@ -105,13 +104,12 @@ export class Drive115Core {
 		const data = `data=${encodeURIComponent(encoded.data)}`;
 		this.logger.log("发送加密数据:", data);
 
-		const response = await this.iRequest.post(
+		const response = await this.fetchRequest.post(
 			new URL(`/app/chrome/downurl?t=${tm}`, this.PRO_API_URL).href,
-			data,
 			{
+				body: data,
 				headers: {
 					"Content-Type": "application/x-www-form-urlencoded",
-					"User-Agent": USER_AGENT_115,
 				},
 			},
 		);
@@ -136,8 +134,7 @@ export class Drive115Core {
 		try {
 			return await this.getDownloadUrlByPro(pickcode);
 		} catch (error) {
-			console.warn("第一种获取下载链接失败", error);
-			this.logger.log("开始使用第二种方式获取下载链接", error);
+			console.warn("第一种获取下载链接失败，使用备用下载", error);
 			const res = await this.getDownloadUrlByNormal(pickcode);
 			return res;
 		}
@@ -149,14 +146,11 @@ export class Drive115Core {
 		fileId: string,
 	): Promise<DownloadResult> {
 		const response = await this.iRequest.get(
-			new URL(
-				`/app/chrome/down?method=get_file_url&pickcode=${pickcode}`,
-				this.PRO_API_URL,
-			).href,
+			new URL("/app/chrome/down", this.PRO_API_URL).href,
 			{
-				headers: {
-					"Content-Type": "application/json",
-					"User-Agent": USER_AGENT_115,
+				params: {
+					method: "get_file_url",
+					pickcode,
 				},
 			},
 		);
@@ -178,12 +172,7 @@ export class Drive115Core {
 		url: string,
 		pickcode: string,
 	): Promise<M3u8Item[]> {
-		const response = await this.iRequest.get(url, {
-			headers: {
-				"Content-Type": "application/json",
-				"User-Agent": USER_AGENT_115,
-			},
-		});
+		const response = await this.fetchRequest.get(url);
 
 		const htmlText = await response.text();
 		if (!/^#/.test(htmlText)) {
@@ -234,8 +223,6 @@ export class Drive115Core {
 			{
 				params,
 				headers: {
-					"Content-Type": "application/json",
-					"User-Agent": USER_AGENT_115,
 					host: VOD_HOST_155,
 					referer: `${this.VOD_URL_115}/?pickcode=${params.pickcode}&share_id=0`,
 				},
@@ -251,8 +238,6 @@ export class Drive115Core {
 			{
 				params,
 				headers: {
-					"Content-Type": "application/json",
-					"User-Agent": USER_AGENT_115,
 					referer: `${this.VOD_URL_115}/?pickcode=${params.pickcode}&share_id=0`,
 					host: VOD_HOST_155,
 				},
@@ -310,8 +295,6 @@ export class Drive115Core {
 			{
 				params,
 				headers: {
-					"Content-Type": "application/json",
-					"User-Agent": USER_AGENT_115,
 					referer: `${this.VOD_URL_115}/?pickcode=${params.pickcode}&share_id=0`,
 					host: VOD_HOST_155,
 				},

@@ -1,4 +1,5 @@
 import { GM_info, GM_xmlhttpRequest } from "$";
+import { merge } from "lodash";
 import { GMRequestCache } from "../cache/gmRequestCache";
 import { IRequest, type RequestOptions, type ResponseType } from "./types";
 
@@ -9,6 +10,9 @@ const isChrome = GM_info.userAgentData.brands.some(
 const DEFAULT_OPTIONS: RequestOptions = {
 	cacheStatus: [200],
 	cache: "no-cache",
+	headers: {
+		"Content-Type": "application/json",
+	},
 };
 
 // GM实现
@@ -18,10 +22,7 @@ export class GMRequest extends IRequest {
 
 	constructor(options: RequestOptions = {}, cacheName = "gm-request-cache") {
 		super();
-		this.options = {
-			...DEFAULT_OPTIONS,
-			...options,
-		};
+		this.options = merge(DEFAULT_OPTIONS, options);
 		this.cache = new GMRequestCache(cacheName);
 	}
 
