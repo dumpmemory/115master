@@ -54,9 +54,9 @@
               :file-info="DataFileInfo"
               :playlist="DataPlaylist"
               :ctx="ctx"
-              :is-mark="DataMark.isMark.value ?? false"
-              :on-mark="handleMark"
-            />
+            >
+              <FileActionMenu :actions="FileActions" :ctx="ctx" />
+            </HeaderInfo>
           </template>
           <template #headerRight="{ ctx }">
             <div class="flex items-center gap-2">
@@ -136,6 +136,7 @@ import type { PlayerContext } from '../../components/XPlayer/hooks/usePlayerProv
 import type XPlayerInstance from '../../components/XPlayer/index.vue'
 import type { Subtitle, ThumbnailRequest } from '../../components/XPlayer/types'
 import type { Entity } from '../../utils/drive115'
+import type { FileActionMenuTypes } from './components/FileActionMenu'
 import { Icon } from '@iconify/vue'
 import { useTitle } from '@vueuse/core'
 import { cloneDeep } from 'lodash'
@@ -149,9 +150,10 @@ import { formatTime } from '../../components/XPlayer/utils/time'
 import { PLUS_VERSION } from '../../constants'
 import { useLockFn } from '../../hooks/useLockFn'
 import { useParamsVideoPage } from '../../hooks/useParams'
-import { ICON_PLAYLIST, ICON_STAR, ICON_STAR_FILL } from '../../icons'
+import { ICON_DRIVE_FILE_MOVE, ICON_PLAYLIST, ICON_STAR, ICON_STAR_FILL } from '../../icons'
 import { subtitlePreference } from '../../utils/cache/subtitlePreference'
 import { clsx } from '../../utils/clsx'
+import { core115 } from '../../utils/core115'
 import { drive115 } from '../../utils/drive115'
 import { formatFileSize } from '../../utils/format'
 import { getAvNumber } from '../../utils/getNumber'
@@ -160,6 +162,7 @@ import { isMac } from '../../utils/platform'
 import { goToPlayer } from '../../utils/route'
 import { webLinkIINA, webLinkShortcutsMpv } from '../../utils/weblink'
 import About from './components/About/index.vue'
+import { FileActionMenu } from './components/FileActionMenu'
 import HeaderInfo from './components/HeaderInfo/index.vue'
 import MovieInfo from './components/MovieInfo/index.vue'
 import Playlist from './components/Playlist/index.vue'
@@ -297,6 +300,96 @@ const hasNext = computed(() => {
   }
   return currentPlaylistIndex.value < DataPlaylist.state.data.length - 1
 })
+
+/**
+ * 文件动作配置
+ */
+const FileActions = computed<FileActionMenuTypes.FileAction[]>(() => [
+  {
+    label: '移动',
+    icon: ICON_DRIVE_FILE_MOVE,
+    onAction: async (ctx) => {
+      // 检查文件信息是否可用
+      if (!DataFileInfo.state?.file_id) {
+        logger.error('File info not ready')
+        return
+      }
+
+      // 确保已加载 SDK
+      await core115.load()
+
+      // 检查 Core SDK 是否可用
+      if (!core115.global.Core?.TreeDG) {
+        logger.error('Core SDK not available')
+        return
+      }
+
+      // 设置 Core.FileConfig，确保移动操作能正确执行
+      if (core115.global.Core.FileConfig) {
+        core115.global.Core.FileConfig.aid = Number(DataFileInfo.state.parent_id) || 0
+        core115.global.Core.FileConfig.cid = params.cid.value || '0'
+      }
+
+      /** 创建模拟 jQuery 对象 */
+      const fileObject = core115.createMockjQueryObject({
+        file_type: '1', // 1=文件, 0=目录
+        file_id: DataFileInfo.state.file_id,
+        cate_id: DataFileInfo.state.parent_id || '',
+        area_id: '0', // 默认 area
+      })
+
+      logger.info('Starting file move operation:', {
+        fileId: DataFileInfo.state.file_id,
+        fileName: DataFileInfo.state.file_name,
+        parentId: DataFileInfo.state.parent_id,
+      })
+
+      // 调用 115 官方 SDK 的移动功能
+      core115.global.Core.TreeDG.Show({
+        list: [fileObject],
+        type: 'move',
+        has_dir: false,
+        callback: async (result?: any) => {
+          logger.info('File move callback triggered', result)
+
+          /** 刷新文件信息，获取新的 parent_id */
+          await DataFileInfo.execute(0, params.pickCode.value ?? '')
+
+          /** 使用新的 parent_id 刷新播放列表，获取新路径 */
+          const newParentId = DataFileInfo.state.parent_id
+          if (newParentId) {
+            await DataPlaylist.execute(0, newParentId)
+            /** 更新 cid 参数为新目录 */
+            params.cid.value = newParentId
+          }
+
+          /** 显示成功提示 */
+          ctx.hud?.show({
+            title: '移动成功',
+            icon: ICON_DRIVE_FILE_MOVE,
+          })
+        },
+      })
+    },
+  },
+  {
+    label: DataMark.isMark.value ? '取消收藏' : '收藏',
+    icon: DataMark.isMark.value ? ICON_STAR_FILL : ICON_STAR,
+    iconColor: DataMark.isMark.value ? 'text-pink-600' : undefined,
+    onAction: async (ctx) => {
+      await handleMark()
+      const title = DataMark.isMark.value ? '已收藏' : '取消收藏'
+      const icon = DataMark.isMark.value ? ICON_STAR_FILL : ICON_STAR
+      const iconClass = DataMark.isMark.value ? 'text-pink-600' : ''
+      ctx.hud?.show({
+        title,
+        icon,
+        iconClass,
+      })
+    },
+  },
+])
+
 /** 动作映射 */
 const ACTION_MAP: ActionMap = {
   toggleFavorite: {

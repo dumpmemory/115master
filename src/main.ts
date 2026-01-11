@@ -6,6 +6,18 @@ import { videoPage, videoTokenPage } from './pages/video'
 import { checkUserAgent } from './utils/checkUserAgent'
 import { debugInfo } from './utils/debugInfo'
 
+/** 设置 document.domain 以支持 115 Bridge 跨域通信 */
+/** 必须在任何代码执行之前设置 */
+try {
+  if (document.domain && document.domain.endsWith('115.com')) {
+    document.domain = '115.com'
+  }
+}
+catch (error) {
+  // 某些浏览器可能不允许设置 domain
+  console.warn('[115Master] Failed to set document.domain:', error)
+}
+
 /** 调试信息 */
 debugInfo.bootstrapInfo()
 
