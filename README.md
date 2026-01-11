@@ -6,7 +6,7 @@
 
 115Master 是一个 115 网盘的 Tampermonkey 脚本，旨在提升 `115网盘` 的浏览体验。
 
-![preview](https://github.com/user-attachments/assets/a12a4f95-7af2-4852-a9a6-d354b4785e9c)
+![preview](https://github.com/user-attachments/assets/7a68bf40-110b-4688-b51e-f830d33eb8ae)
 
 ## 功能
 
