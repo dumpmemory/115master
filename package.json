@@ -1,7 +1,7 @@
 {
   "name": "115master",
   "type": "module",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "private": true,
   "packageManager": "pnpm@9.15.9",
   "description": "115网盘魔法优化: 画质增强 | 视频缩略图 | 在线字幕",
