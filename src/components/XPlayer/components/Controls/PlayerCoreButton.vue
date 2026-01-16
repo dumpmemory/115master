@@ -1,3 +1,4 @@
+<!-- 已弃用,仅限开发调试使用 -->
 <template>
   <button
     ref="buttonRef"

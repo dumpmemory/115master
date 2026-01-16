@@ -76,14 +76,15 @@ const styles = clsx({
         'ease-linear',
         'rounded-full',
         'overflow-hidden',
-        'bg-base-content/30 backdrop-saturation-180',
+        'bg-base-content/25',
+        'shadow-[0_0_1px_rgba(0,0,0,0.1),0_0_32px_rgba(0,0,0,0.1)]',
       ],
   },
   thumb: {
     current:
-      'bg-base-content/80 linear absolute h-full w-full origin-left transition-transform duration-100',
+      'bg-base-content/95 linear absolute h-full w-full origin-left transition-transform duration-100',
     dragging: 'transition-none',
-    hover: 'bg-base-content/50 pointer-events-none absolute h-full w-full origin-left',
+    hover: 'bg-base-content/15 pointer-events-none absolute h-full w-full origin-left',
   },
 })
 
