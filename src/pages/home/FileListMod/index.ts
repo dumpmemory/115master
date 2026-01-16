@@ -9,11 +9,13 @@ import { FileItemModClickPlay } from './FileItemMod/clickPlay'
 import { FileItemModDownload } from './FileItemMod/download'
 import { FileItemModExtInfo } from './FileItemMod/extInfo'
 import { FileItemModExtMenu } from './FileItemMod/extMenu'
+import { FileItemModFolderLink } from './FileItemMod/folderLink'
 import { FileItemModVideoCover } from './FileItemMod/videoCover'
 import { FileListScrollHistory } from './scrollHistory'
 import './index.css'
 
 const itemMods = [
+  FileItemModFolderLink,
   FileItemModExtInfo,
   FileItemModActressInfo,
   FileItemModVideoCover,
