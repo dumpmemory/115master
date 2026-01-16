@@ -122,7 +122,7 @@ const styles = clsx({
     ],
     bg: [
       'absolute inset-0 top-[-200%]',
-      'bg-[linear-gradient(to_top,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.14)_15%,rgba(0,0,0,0.08)_35%,rgba(0,0,0,0.03)_60%,rgba(0,0,0,0)_100%)]',
+      'bg-[linear-gradient(to_top,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0.32)_22%,rgba(0,0,0,0.26)_32%,rgba(0,0,0,0.20)_42%,rgba(0,0,0,0.14)_52%,rgba(0,0,0,0.08)_62%,rgba(0,0,0,0.03)_72%,rgba(0,0,0,0)_100%)]',
       'pointer-events-none',
     ],
     mainContent: 'relative flex flex-col gap-y-2 px-6 pb-6',
