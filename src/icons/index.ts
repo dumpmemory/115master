@@ -16,3 +16,5 @@ export const ICON_CLOSE = 'material-symbols:close-rounded'
 export const ICON_RIGHT = 'bytesize:chevron-right'
 // left
 export const ICON_LEFT = 'bytesize:chevron-left'
+// 移动文件
+export const ICON_DRIVE_FILE_MOVE = 'material-symbols:drive-file-move-outline'
