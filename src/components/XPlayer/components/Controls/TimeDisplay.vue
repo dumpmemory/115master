@@ -21,7 +21,7 @@ const styles = clsx({
     controlStyles.text,
     'flex justify-center select-none',
     'px-2',
-    'min-w-40',
+    'min-w-38',
     'text-lg',
     'text-base-content',
     'tracking-tight',

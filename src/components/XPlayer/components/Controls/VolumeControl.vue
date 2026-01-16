@@ -1,9 +1,6 @@
 <template>
-  <div
-    :class="[
-      styles.tooltip,
-    ]"
-  >
+  <div :class="[styles.tooltip]">
+    <!-- 恢复音频提示 -->
     <div v-if="playerCore?.isSuspended" :class="[styles.tooltipContent]">
       <button
         :class="[styles.resumeBtn]"
@@ -15,69 +12,80 @@
         点击恢复音频 {{ muteKey }}
       </button>
     </div>
-    <div
-      ref="volumeControlRef"
-      :class="[styles.root]"
-      :data-expended="expanded"
-      @wheel.prevent="handleWheelWithThrottle"
-    >
-      <button
-        class="swap swap-rotate" :class="[styles.btn.root, {
-          'swap-active': playerCore?.muted,
-        }]"
-        :title="muteTip"
-        :disabled="!playerCore?.canplay || playerCore?.isSuspended"
-        @click="playerCore?.toggleMute"
-      >
-        <Icon
-          class="swap-off" :class="[styles.btn.icon]"
-          :icon="VolumeIcon"
-        />
-        <Icon
-          class="swap-on" :class="[styles.btn.icon]"
-          :icon="VolumeIcon"
-        />
-      </button>
-      <input
-        type="range"
-        :class="[styles.range]"
-        min="0"
-        max="100"
-        :value="playerCore?.volume ?? 0"
-        :disabled="!playerCore?.canplay || playerCore?.isSuspended"
-        @input="handleVolumeChange"
-      >
-    </div>
+
+    <ControlButtonGroup direction="left" @wheel.prevent="handleWheelWithThrottle">
+      <template #default>
+        <button
+          class="swap swap-rotate"
+          :class="[styles.btn.root, {
+            'swap-active': playerCore?.muted,
+          }]"
+          :title="muteTip"
+          :disabled="!playerCore?.canplay || playerCore?.isSuspended"
+          @click="playerCore?.toggleMute"
+        >
+          <Icon
+            class="swap-off"
+            :class="[styles.btn.icon]"
+            :icon="VolumeIcon"
+          />
+          <Icon
+            class="swap-on"
+            :class="[styles.btn.icon]"
+            :icon="VolumeIcon"
+          />
+        </button>
+      </template>
+
+      <template #expanded>
+        <input
+          type="range"
+          :class="[styles.range]"
+          min="0"
+          max="100"
+          :value="playerCore?.volume ?? 0"
+          :disabled="!playerCore?.canplay || playerCore?.isSuspended"
+          @input="handleVolumeChange"
+        >
+      </template>
+    </ControlButtonGroup>
   </div>
 </template>
 
 <script setup lang="ts">
+/**
+ * VolumeControl 音量控制组件
+ *
+ * 功能说明：
+ * - 点击按钮切换静音状态
+ * - 鼠标悬停展开显示音量滑块
+ * - 滚轮调节音量
+ * - 支持音频恢复提示
+ *
+ * 复用 ControlButtonGroup 实现展开/折叠逻辑
+ */
 import { Icon } from '@iconify/vue'
-import { useElementHover, useThrottleFn, useTimeoutFn } from '@vueuse/core'
-import { computed, shallowRef, watch } from 'vue'
+import { useThrottleFn } from '@vueuse/core'
+import { computed } from 'vue'
 import { clsx } from '../../../../utils/clsx'
 import { usePlayerContext } from '../../hooks/usePlayerProvide'
 import { controlStyles } from '../../styles/common'
 import { getVolumeIcon } from '../../utils/icon'
+import ControlButtonGroup from './ControlButtonGroup.vue'
 
 const { playerCore, hud, shortcuts } = usePlayerContext()
 
 const styles = computed(() => clsx({
-  root: [
-    'flex items-center gap-2',
-    'group',
-    'w-10',
-    'transition-[width,padding] duration-500 ease-[var(--app-ease-in-out-expo)]',
-    'data-[expended="true"]:w-40',
-    'data-[expended="true"]:pl-2',
-    'data-[expended="true"]:pr-6',
-  ],
   btn: controlStyles.btn,
-  range: ['range range-2xs range-primary', 'transition-[width] duration-300 ease-[var(--app-ease-in-out-expo)]', 'w-0 group-data-[expended="true"]:w-24'],
+  range: [
+    'range range-2xs range-primary',
+    'w-24',
+    'mx-2',
+  ],
   tooltip: [
     'tooltip tooltip-top',
     {
-      'tooltip-open': playerCore?.value?.isSuspended,
+      'tooltip-open': playerCore.value?.isSuspended,
     },
   ],
   tooltipContent: 'tooltip-content px-4 py-2',
@@ -86,23 +94,7 @@ const styles = computed(() => clsx({
 
 const MUTE_NAME = '静音'
 
-const volumeControlRef = shallowRef<HTMLElement>()
-const expanded = shallowRef(false)
-const isHovered = useElementHover(volumeControlRef)
-const foldCounttime = useTimeoutFn(() => {
-  expanded.value = false
-}, 200)
 const handleWheelWithThrottle = useThrottleFn(handleWheel, 60)
-
-watch(() => isHovered.value, (value) => {
-  if (value) {
-    expanded.value = true
-    foldCounttime.stop()
-  }
-  else {
-    foldCounttime.start()
-  }
-})
 
 const VolumeIcon = computed(() => {
   return getVolumeIcon(

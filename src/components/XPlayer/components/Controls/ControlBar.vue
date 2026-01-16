@@ -54,10 +54,18 @@
           </div>
           <div :class="styles.controlBar.mainBarRight">
             <ControlBox>
-              <!-- 画质控制 -->
-              <QualityButton />
-              <!-- 播放器核心 -->
-              <PlayerCoreButton />
+              <ControlButtonGroup>
+                <template #expanded>
+                  <!-- 画面变换 -->
+                  <TransformButton />
+                  <!-- 视频色彩 -->
+                  <VideoEnhanceSettings />
+                  <!-- 音频轨道 -->
+                  <AudioTrackButton />
+                </template>
+                <!-- 字幕按钮 -->
+                <SubtitleButton />
+              </ControlButtonGroup>
             </ControlBox>
 
             <ControlBox>
@@ -66,17 +74,8 @@
             </ControlBox>
 
             <ControlBox>
-              <!-- 音频 Track -->
-              <AudioTrackButton />
-              <!-- 字幕控制 -->
-              <SubtitleButton />
-            </ControlBox>
-
-            <ControlBox>
-              <!-- 视频色彩 -->
-              <VideoEnhanceSettings />
-              <!-- 画面变换 -->
-              <TransformButton />
+              <!-- 画质控制 -->
+              <QualityButton />
             </ControlBox>
 
             <ControlBox>
@@ -99,12 +98,12 @@ import { useControlsMouseDetection } from '../../hooks/useControlsMouseDetection
 import { usePlayerContext } from '../../hooks/usePlayerProvide'
 import AudioTrackButton from './AudioTrackButton.vue'
 import ControlBox from './ControlBox.vue'
+import ControlButtonGroup from './ControlButtonGroup.vue'
 import EpisodeButton from './EpisodeButton.vue'
 import FullscreenButton from './FullscreenButton.vue'
 import PipButton from './PipButton.vue'
 import PlaybackRateButton from './PlaybackRateButton.vue'
 import PlayButton from './PlayButton.vue'
-import PlayerCoreButton from './PlayerCoreButton.vue'
 import ProgressBar from './ProgressBar.vue'
 import QualityButton from './QualityButton.vue'
 import SubtitleButton from './SubtitleButton.vue'
