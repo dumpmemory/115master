@@ -14,12 +14,12 @@
 </template>
 
 <script setup lang="ts">
-import type { Subtitle } from '../../types'
+import type { Subtitle } from '@/components/XPlayer/types'
 import { useElementBounding } from '@vueuse/core'
 import { computed, shallowRef, watch } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { convertSrtToVtt } from '../../../../utils/subtitle/subtitleTool'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { clsx } from '@/utils/clsx'
+import { convertSrtToVtt } from '@/utils/subtitle/subtitleTool'
 
 const styles = clsx({
   container: 'absolute inset-0',

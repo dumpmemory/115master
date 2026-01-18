@@ -1,5 +1,5 @@
-import type { Subtitle } from '../types'
 import type { PlayerContext } from './usePlayerProvide'
+import type { Subtitle } from '@/components/XPlayer/types'
 import { computed, ref, watch } from 'vue'
 
 /**

@@ -1,13 +1,13 @@
 import type { Ref } from 'vue'
 import { useElementVisibility, useScroll } from '@vueuse/core'
 import { onUnmounted, reactive, watch } from 'vue'
-import { FRIENDLY_ERROR_MESSAGE } from '../../constants'
-import { videoCoverCache } from '../../utils/cache'
-import { M3U8ClipperNew } from '../../utils/clipper/m3u8Clipper'
-import { drive115 } from '../../utils/drive115'
-import { Drive115Error } from '../../utils/drive115/core'
-import { getImageResize } from '../../utils/image'
-import { Scheduler, SchedulerError, TaskStatus } from '../../utils/scheduler'
+import { FRIENDLY_ERROR_MESSAGE } from '@/constants'
+import { videoCoverCache } from '@/utils/cache'
+import { M3U8ClipperNew } from '@/utils/clipper/m3u8Clipper'
+import { drive115 } from '@/utils/drive115'
+import { Drive115Error } from '@/utils/drive115/core'
+import { getImageResize } from '@/utils/image'
+import { Scheduler, SchedulerError, TaskStatus } from '@/utils/scheduler'
 
 /** 最大宽度 */
 const MAX_WIDTH = 720

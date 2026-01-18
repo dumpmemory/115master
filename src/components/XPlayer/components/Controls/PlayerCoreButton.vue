@@ -43,12 +43,12 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { shallowRef } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { PlayerCoreType } from '../../hooks/playerCore/types'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
-import { ICONS } from '../../index.const'
-import { controlStyles } from '../../styles/common'
-import Popup from '../Popup/index.vue'
+import Popup from '@/components/XPlayer/components/Popup/index.vue'
+import { PlayerCoreType } from '@/components/XPlayer/hooks/playerCore/types'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { ICONS } from '@/components/XPlayer/index.const'
+import { controlStyles } from '@/components/XPlayer/styles/common'
+import { clsx } from '@/utils/clsx'
 
 const styles = clsx({
   ...controlStyles,

@@ -1,4 +1,4 @@
-import type { VideoCoverRaw } from '../../hooks/useVideoCover'
+import type { VideoCoverRaw } from '@/hooks/useVideoCover'
 import { CacheCore } from './core/index'
 
 type VideoCoverCacheValue = VideoCoverRaw

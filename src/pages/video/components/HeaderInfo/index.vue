@@ -34,12 +34,12 @@
 </template>
 
 <script setup lang="ts">
-import type { PlayerContext } from '../../../../components/XPlayer/hooks/usePlayerProvide'
-import type { useDataFileInfo } from '../../data/useDataFileInfo'
-import type { useDataPlaylist } from '../../data/useDataPlaylist'
+import type { PlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import type { useDataFileInfo } from '@/pages/video/data/useDataFileInfo'
+import type { useDataPlaylist } from '@/pages/video/data/useDataPlaylist'
 import { computed } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { formatFileSize } from '../../../../utils/format'
+import { clsx } from '@/utils/clsx'
+import { formatFileSize } from '@/utils/format'
 
 const props = defineProps<{
   /** 播放器上下文 */

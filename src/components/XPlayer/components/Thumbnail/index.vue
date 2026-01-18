@@ -59,15 +59,15 @@
 
 <script setup lang="ts">
 import type { Ref } from 'vue'
-import type { ThumbnailFrame } from '../../types'
+import type { ThumbnailFrame } from '@/components/XPlayer/types'
 import { refManualReset } from '@vueuse/core'
 import { computed, onUnmounted, shallowRef, toValue, watch } from 'vue'
-import LoadingError from '../../../../components/LoadingError/index.vue'
-import { clsx } from '../../../../utils/clsx'
-import { getImageResize } from '../../../../utils/image'
-import { boundary } from '../../../../utils/number'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
-import { formatTime } from '../../utils/time'
+import LoadingError from '@/components/LoadingError/index.vue'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { formatTime } from '@/components/XPlayer/utils/time'
+import { clsx } from '@/utils/clsx'
+import { getImageResize } from '@/utils/image'
+import { boundary } from '@/utils/number'
 
 interface Props {
   /** 是否显示 */

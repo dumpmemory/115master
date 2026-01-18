@@ -40,14 +40,14 @@
 </template>
 
 <script setup lang="ts">
-import type { Entity } from '../../../../utils/drive115'
-import type { useDataPlaylist } from '../../data/useDataPlaylist'
 import type PlaylistItemVue from './item.vue'
+import type { useDataPlaylist } from '@/pages/video/data/useDataPlaylist'
+import type { Entity } from '@/utils/drive115'
 import { Icon } from '@iconify/vue'
 import { nextTick, useTemplateRef, watch } from 'vue'
-import LoadingError from '../../../../components/LoadingError/index.vue'
-import { ICON_CLOSE, ICON_PLAYLIST } from '../../../../icons'
-import { clsx } from '../../../../utils/clsx'
+import LoadingError from '@/components/LoadingError/index.vue'
+import { ICON_CLOSE, ICON_PLAYLIST } from '@/icons'
+import { clsx } from '@/utils/clsx'
 import PlaylistItem from './item.vue'
 
 const props = defineProps<{

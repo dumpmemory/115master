@@ -1,4 +1,4 @@
-import type { ActressImageInfo } from '../../types/actress'
+import type { ActressImageInfo } from '@/types/actress'
 import { CacheCore } from './core/index'
 
 const ACTRESS_FACE_CACHE_KEY = 'actress_face_json_cache'

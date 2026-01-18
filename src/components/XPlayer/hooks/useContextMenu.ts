@@ -1,9 +1,9 @@
-import type { ActionKey } from '../components/Shortcuts/shortcuts.types'
 import type { PlayerContext } from './usePlayerProvide'
+import type { ActionKey } from '@/components/XPlayer/components/Shortcuts/shortcuts.types'
 import { ref, shallowRef } from 'vue'
 import {
   ICONS,
-} from '../index.const'
+} from '@/components/XPlayer/index.const'
 
 /** 设置标签页类型 */
 export type SettingsTab = 'play' | 'shortcuts'

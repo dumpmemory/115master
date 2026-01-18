@@ -1,7 +1,7 @@
 import type { RequestOptions, ResponseType } from './types'
 import { GM_info, GM_xmlhttpRequest } from '$'
 import { merge } from 'lodash'
-import { GMRequestCache } from '../cache/gmRequestCache'
+import { GMRequestCache } from '@/utils/cache/gmRequestCache'
 import { IRequest } from './types'
 
 /** 是否是 Chrome 浏览器 */

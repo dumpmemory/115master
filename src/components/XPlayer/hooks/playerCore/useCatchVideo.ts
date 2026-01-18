@@ -2,7 +2,7 @@ import type { Ref } from 'vue'
 import { useEventListener } from '@vueuse/core'
 import { defer } from 'lodash'
 import { toValue } from 'vue'
-import { xPlayerLogger } from '../../utils/logger'
+import { xPlayerLogger } from '@/components/XPlayer/utils/logger'
 
 export const VIDEO_CATCH_ERROES = {
   VIDEO_TRACK_LOSS: new Error('Video track loss error'),

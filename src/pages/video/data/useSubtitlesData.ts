@@ -1,13 +1,13 @@
-import type { Subtitle } from '../../../components/XPlayer/types'
+import type { Subtitle } from '@/components/XPlayer/types'
 import { useAsyncState } from '@vueuse/core'
 import { shallowRef } from 'vue'
-import { jaccardSimilarity } from '../../../utils/array'
-import { subtitlePreference } from '../../../utils/cache/subtitlePreference'
-import { drive115 } from '../../../utils/drive115'
-import { fetchRequest } from '../../../utils/request/fetchRequest'
-import { removeFileExtension, splitWords } from '../../../utils/string'
-import { subtitlecat } from '../../../utils/subtitle/subtitlecat'
-import { thunderSubtitle } from '../../../utils/subtitle/thunder'
+import { jaccardSimilarity } from '@/utils/array'
+import { subtitlePreference } from '@/utils/cache/subtitlePreference'
+import { drive115 } from '@/utils/drive115'
+import { fetchRequest } from '@/utils/request/fetchRequest'
+import { removeFileExtension, splitWords } from '@/utils/string'
+import { subtitlecat } from '@/utils/subtitle/subtitlecat'
+import { thunderSubtitle } from '@/utils/subtitle/thunder'
 
 /** 字幕数据 */
 export function useDataSubtitles() {

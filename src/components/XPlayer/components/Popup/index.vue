@@ -33,9 +33,9 @@ import {
   shallowRef,
   watch,
 } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
-import { usePortal } from '../../hooks/usePortal'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { usePortal } from '@/components/XPlayer/hooks/usePortal'
+import { clsx } from '@/utils/clsx'
 import { isInContainsTrigger, triggerSet } from './utils'
 
 defineOptions({

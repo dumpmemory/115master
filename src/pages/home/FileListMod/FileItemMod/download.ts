@@ -1,5 +1,5 @@
-import { drive115 } from '../../../../utils/drive115'
-import { is115Browser } from '../../../../utils/platform'
+import { drive115 } from '@/utils/drive115'
+import { is115Browser } from '@/utils/platform'
 import { FileItemModBase } from './base'
 
 /**

@@ -1,5 +1,5 @@
-import type { Subtitle } from '../../components/XPlayer/types'
-import { appLogger } from '../logger'
+import type { Subtitle } from '@/components/XPlayer/types'
+import { appLogger } from '@/utils/logger'
 import { CacheCore } from './core'
 
 /** 字幕偏好 Type */

@@ -1,4 +1,4 @@
-import { ICONS } from '../index.const'
+import { ICONS } from '@/components/XPlayer/index.const'
 
 /**
  * 获取音量图标 Symbol

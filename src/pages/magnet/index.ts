@@ -1,5 +1,5 @@
-import { appLogger } from '../../utils/logger'
-import { openOfflineTask } from '../home/TopHeaderMod/openOfflineTask'
+import { openOfflineTask } from '@/pages/home/TopHeaderMod/openOfflineTask'
+import { appLogger } from '@/utils/logger'
 
 /** 磁力链接任务键名 */
 const MAGNET_TASK_KEY = 'magnetTask'

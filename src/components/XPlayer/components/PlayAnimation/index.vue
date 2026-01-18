@@ -10,9 +10,9 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { computed, shallowRef, watch } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
-import { ICONS } from '../../index.const'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { ICONS } from '@/components/XPlayer/index.const'
+import { clsx } from '@/utils/clsx'
 
 /** 样式抽象 */
 const styles = clsx({

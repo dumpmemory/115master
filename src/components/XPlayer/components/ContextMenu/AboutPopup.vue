@@ -40,9 +40,9 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { clsx } from '../../../../utils/clsx'
-import { ICONS } from '../../index.const'
-import Popup from '../Popup/index.vue'
+import Popup from '@/components/XPlayer/components/Popup/index.vue'
+import { ICONS } from '@/components/XPlayer/index.const'
+import { clsx } from '@/utils/clsx'
 
 interface Props {
   visible: boolean

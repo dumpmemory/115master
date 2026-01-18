@@ -1,7 +1,7 @@
 import { GM_openInTab } from '$'
-import { VOD_URL_115 } from '../../../../constants/115'
-import { goToPlayer } from '../../../../utils/route'
-import { IvType } from '../../types'
+import { VOD_URL_115 } from '@/constants/115'
+import { IvType } from '@/pages/home/types'
+import { goToPlayer } from '@/utils/route'
 import { FileItemModBase } from './base'
 
 /**

@@ -28,9 +28,9 @@
 import { Icon } from '@iconify/vue'
 import { useClipboard } from '@vueuse/core'
 import { computed } from 'vue'
-import { ICON_ERROR } from '../../icons'
-import { clsx } from '../../utils/clsx'
-import { MEDIA_ERROR_NAME } from '../XPlayer/index.const'
+import { MEDIA_ERROR_NAME } from '@/components/XPlayer/index.const'
+import { ICON_ERROR } from '@/icons'
+import { clsx } from '@/utils/clsx'
 
 const props = withDefaults(
   defineProps<{

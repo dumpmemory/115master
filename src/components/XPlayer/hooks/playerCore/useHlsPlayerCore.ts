@@ -1,6 +1,6 @@
 import type { HlsConfig } from 'hls.js'
-import type { PlayerContext } from '../usePlayerProvide'
 import type { PlayerCoreMethods } from './types'
+import type { PlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
 import Hls from 'hls.js'
 import { shallowRef } from 'vue'
 import { PlayerCoreType } from './types'

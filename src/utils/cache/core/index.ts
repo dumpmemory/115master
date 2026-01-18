@@ -1,5 +1,5 @@
 import localforage from 'localforage'
-import { appLogger } from '../../logger'
+import { appLogger } from '@/utils/logger'
 import { STORE_NAME } from './const'
 import { QuotaManager } from './quotaManager'
 

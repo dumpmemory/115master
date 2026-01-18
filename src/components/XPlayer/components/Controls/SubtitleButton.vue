@@ -64,15 +64,15 @@
 </template>
 
 <script setup lang="ts">
-import type { Subtitle } from '../../types'
+import type { Subtitle } from '@/components/XPlayer/types'
 import { Icon } from '@iconify/vue'
 import { computed, shallowRef } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
-import { ICONS } from '../../index.const'
-import { controlStyles } from '../../styles/common'
-import Popup from '../Popup/index.vue'
-import SubtitleDisplay from '../SubtitleDisplay.vue'
+import Popup from '@/components/XPlayer/components/Popup/index.vue'
+import SubtitleDisplay from '@/components/XPlayer/components/SubtitleDisplay.vue'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { ICONS } from '@/components/XPlayer/index.const'
+import { controlStyles } from '@/components/XPlayer/styles/common'
+import { clsx } from '@/utils/clsx'
 
 const styles = clsx({
   menu: {

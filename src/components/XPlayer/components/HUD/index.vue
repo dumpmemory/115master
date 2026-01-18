@@ -59,9 +59,9 @@
 import type { HudMessage } from './types'
 import { Icon } from '@iconify/vue'
 import { computed, isVNode, ref, watch } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
-import Popup from '../Popup/index.vue'
+import Popup from '@/components/XPlayer/components/Popup/index.vue'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { clsx } from '@/utils/clsx'
 
 const styles = clsx({
   popup: 'bg-base-100/50! top-6!  left-6! backdrop-blur-sm! backdrop-brightness-100! backdrop-saturate-120!',

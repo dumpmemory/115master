@@ -1,5 +1,5 @@
 import localforage from 'localforage'
-import { appLogger } from '../../logger'
+import { appLogger } from '@/utils/logger'
 import { META_STORE_NAME, STORE_NAME } from './const'
 
 export interface CacheMetaItem {

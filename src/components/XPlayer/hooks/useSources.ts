@@ -1,10 +1,10 @@
-import type { VideoSource } from '../types'
 import type { PlayerContext } from './usePlayerProvide'
+import type { VideoSource } from '@/components/XPlayer/types'
 import { useDebounceFn } from '@vueuse/core'
 import { minBy } from 'lodash'
 import { ref, shallowRef, toValue, watch } from 'vue'
-import { EVENTS } from '../events'
-import { AVPLAYER_ENABLED_EXTENSIONS } from '../index.const'
+import { EVENTS } from '@/components/XPlayer/events'
+import { AVPLAYER_ENABLED_EXTENSIONS } from '@/components/XPlayer/index.const'
 import { PlayerCoreType } from './playerCore/types'
 import { VIDEO_CATCH_ERROES } from './playerCore/useCatchVideo'
 

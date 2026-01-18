@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { clsx } from '../../../../utils/clsx'
+import { clsx } from '@/utils/clsx'
 
 const styles = clsx({
   root: [

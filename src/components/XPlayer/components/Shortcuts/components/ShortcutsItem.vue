@@ -33,17 +33,17 @@
  * @description 用于显示快捷键项
  */
 
-import type { Action, ActionKey, KeyBindings, KeyBindingStr } from '../shortcuts.types'
+import type { Action, ActionKey, KeyBindings, KeyBindingStr } from '@/components/XPlayer/components/Shortcuts/shortcuts.types'
 import { Icon } from '@iconify/vue'
 import { computed } from 'vue'
-import { clsx } from '../../../../../utils/clsx'
-import { usePlayerContext } from '../../../hooks/usePlayerProvide'
-import { ICONS } from '../../../index.const'
 import {
   hasEmptyKeybindings,
   isMaxKeybindings,
   isSameKeyBindings,
-} from '../shortcuts.utils'
+} from '@/components/XPlayer/components/Shortcuts/shortcuts.utils'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { ICONS } from '@/components/XPlayer/index.const'
+import { clsx } from '@/utils/clsx'
 import KeyRecorder from './KeyRecorder.vue'
 
 const props = defineProps<{

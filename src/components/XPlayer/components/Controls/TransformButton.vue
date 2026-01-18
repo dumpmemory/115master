@@ -29,10 +29,10 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { shallowRef } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { ICONS } from '../../index.const'
-import { controlStyles } from '../../styles/common'
-import Popup from '../Popup/index.vue'
+import Popup from '@/components/XPlayer/components/Popup/index.vue'
+import { ICONS } from '@/components/XPlayer/index.const'
+import { controlStyles } from '@/components/XPlayer/styles/common'
+import { clsx } from '@/utils/clsx'
 import TransformSettings from './TransformSettings.vue'
 
 const styles = clsx({

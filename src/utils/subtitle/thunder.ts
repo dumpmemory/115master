@@ -1,7 +1,7 @@
-import type { Subtitle } from '../../components/XPlayer/types'
+import type { Subtitle } from '@/components/XPlayer/types'
 import md5 from 'blueimp-md5'
-import { appLogger } from '../logger'
-import { GMRequestInstance } from '../request/gmRequst'
+import { appLogger } from '@/utils/logger'
+import { GMRequestInstance } from '@/utils/request/gmRequst'
 /**
  * 迅雷字幕 API 返回的单个字幕项
  */

@@ -35,12 +35,12 @@
 </template>
 
 <script setup lang="ts">
-import type { VideoSource } from '../../types'
+import type { VideoSource } from '@/components/XPlayer/types'
 import { computed, shallowRef } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
-import { controlStyles } from '../../styles/common'
-import Popup from '../Popup/index.vue'
+import Popup from '@/components/XPlayer/components/Popup/index.vue'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { controlStyles } from '@/components/XPlayer/styles/common'
+import { clsx } from '@/utils/clsx'
 
 const styles = clsx({
   ...controlStyles,

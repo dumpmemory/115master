@@ -1,5 +1,5 @@
-import type { PlayerContext } from '../hooks/usePlayerProvide'
 import type { EVENTS } from './events.const'
+import type { PlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
 
 // eslint-disable-next-line ts/consistent-type-definitions
 export type Events = {

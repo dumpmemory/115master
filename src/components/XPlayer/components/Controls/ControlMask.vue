@@ -12,8 +12,8 @@
 
 <script setup lang="ts">
 import { onMounted, onUnmounted, shallowRef } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { clsx } from '@/utils/clsx'
 
 const styles = clsx({
   mask: 'relative flex-1',

@@ -1,8 +1,8 @@
 import type { EmitFn, InjectionKey, Ref, ShallowRef, ToRefs } from 'vue'
-import type { Logger } from '../../../utils/logger'
-import type { Events } from '../events'
-import type { XPlayerEmit, XPlayerProps } from '../types'
 import type { usePlayerCoreDecorator } from './playerCore/usePlayerCore'
+import type { Events } from '@/components/XPlayer/events'
+import type { XPlayerEmit, XPlayerProps } from '@/components/XPlayer/types'
+import type { Logger } from '@/utils/logger'
 import { useVModels } from '@vueuse/core'
 import {
 
@@ -10,9 +10,9 @@ import {
   provide,
   ref,
 } from 'vue'
-import { useShortcuts } from '../components/Shortcuts/shortcuts.hooks'
-import { EventMitt } from '../events'
-import { xPlayerLogger } from '../utils/logger'
+import { useShortcuts } from '@/components/XPlayer/components/Shortcuts/shortcuts.hooks'
+import { EventMitt } from '@/components/XPlayer/events'
+import { xPlayerLogger } from '@/components/XPlayer/utils/logger'
 import {
 
   useSwitchPlayerCore,

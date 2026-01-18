@@ -1,4 +1,4 @@
-import { registerMagnetTaskHandler } from '../magnet'
+import { registerMagnetTaskHandler } from '@/pages/magnet'
 import { ModManager } from './BaseMod'
 import FileListMod from './FileListMod'
 import { TopFilePathMod } from './TopFilePathMod'

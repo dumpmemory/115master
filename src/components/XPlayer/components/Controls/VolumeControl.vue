@@ -67,10 +67,10 @@
 import { Icon } from '@iconify/vue'
 import { useThrottleFn } from '@vueuse/core'
 import { computed } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
-import { controlStyles } from '../../styles/common'
-import { getVolumeIcon } from '../../utils/icon'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { controlStyles } from '@/components/XPlayer/styles/common'
+import { getVolumeIcon } from '@/components/XPlayer/utils/icon'
+import { clsx } from '@/utils/clsx'
 import ControlButtonGroup from './ControlButtonGroup.vue'
 
 const { playerCore, hud, shortcuts } = usePlayerContext()

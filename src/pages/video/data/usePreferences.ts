@@ -1,4 +1,4 @@
-import type { ShortcutsPreference } from '../../../components/XPlayer/components/Shortcuts/shortcuts.types'
+import type { ShortcutsPreference } from '@/components/XPlayer/components/Shortcuts/shortcuts.types'
 import { useStorage } from '@vueuse/core'
 import { merge } from 'lodash'
 

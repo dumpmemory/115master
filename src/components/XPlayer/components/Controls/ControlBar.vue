@@ -93,9 +93,9 @@
 
 <script setup lang="ts">
 import { computed, shallowRef } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { useControlsMouseDetection } from '../../hooks/useControlsMouseDetection'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
+import { useControlsMouseDetection } from '@/components/XPlayer/hooks/useControlsMouseDetection'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { clsx } from '@/utils/clsx'
 import AudioTrackButton from './AudioTrackButton.vue'
 import ControlBox from './ControlBox.vue'
 import ControlButtonGroup from './ControlButtonGroup.vue'

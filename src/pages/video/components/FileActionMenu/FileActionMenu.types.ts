@@ -1,4 +1,4 @@
-import type { PlayerContext } from '../../../../components/XPlayer/hooks/usePlayerProvide'
+import type { PlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
 
 export interface FileAction {
   label: string

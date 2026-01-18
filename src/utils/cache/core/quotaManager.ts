@@ -1,5 +1,5 @@
 import type { CacheCore } from './index'
-import { appLogger } from '../../logger'
+import { appLogger } from '@/utils/logger'
 import { CLEANUP_BATCH_SIZE, STORAGE_QUOTA_THRESHOLD } from './const'
 import { MetaStore } from './metaStore'
 

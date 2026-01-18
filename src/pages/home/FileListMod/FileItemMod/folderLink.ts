@@ -1,5 +1,5 @@
-import { NORMAL_URL_115 } from '../../../../constants/115'
-import { FileType } from '../../types'
+import { NORMAL_URL_115 } from '@/constants/115'
+import { FileType } from '@/pages/home/types'
 import { FileItemModBase } from './base'
 
 /**
