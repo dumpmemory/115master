@@ -64,8 +64,8 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
-import { ICONS } from '../../index.const'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { ICONS } from '@/components/XPlayer/index.const'
 
 const { transform } = usePlayerContext()
 </script>

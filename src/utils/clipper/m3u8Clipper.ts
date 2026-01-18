@@ -1,6 +1,6 @@
-import type { Logger } from './../logger'
 import type { FrameData } from './DecoderFlow'
-import { appLogger } from './../logger'
+import type { Logger } from '@/utils/logger'
+import { appLogger } from '@/utils/logger'
 import { DecoderFlow } from './DecoderFlow'
 import { HlsIO } from './io/HlsIO'
 

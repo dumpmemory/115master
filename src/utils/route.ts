@@ -1,7 +1,7 @@
-import type { PlayingVideoInfo } from '../types/player'
+import type { PlayingVideoInfo } from '@/types/player'
 import { GM_openInTab, GM_setValue } from '$'
-import { NORMAL_HOST_155 } from '../constants/115'
-import GM_VALUE_KEY from '../constants/gm.value.key'
+import { NORMAL_HOST_155 } from '@/constants/115'
+import GM_VALUE_KEY from '@/constants/gm.value.key'
 
 /**
  * 跳转播放器

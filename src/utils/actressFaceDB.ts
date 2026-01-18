@@ -1,6 +1,6 @@
-import type { ActressImageInfo, ActressImageMap } from '../types/actress'
+import type { ActressImageInfo, ActressImageMap } from '@/types/actress'
 import { GM_notification } from '$'
-import { CDN_BASE_URL } from '../constants'
+import { CDN_BASE_URL } from '@/constants'
 import { actressFaceCache } from './cache/actressFaceCache'
 import { appLogger } from './logger'
 

@@ -1,4 +1,4 @@
-import type { JavInfo } from '../jav/jav'
+import type { JavInfo } from '@/utils/jav/jav'
 import { CacheCore } from './core/index'
 
 const PREVIEW_CACHE_KEY = 'jav_cache'

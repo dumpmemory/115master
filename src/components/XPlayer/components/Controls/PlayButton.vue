@@ -26,10 +26,10 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { computed } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
-import { ICONS } from '../../index.const'
-import { controlStyles } from '../../styles/common'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { ICONS } from '@/components/XPlayer/index.const'
+import { controlStyles } from '@/components/XPlayer/styles/common'
+import { clsx } from '@/utils/clsx'
 
 const styles = clsx({
   btn: {

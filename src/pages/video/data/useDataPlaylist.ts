@@ -1,7 +1,7 @@
-import type { PlaylistItem } from '../../../utils/drive115/api/entity'
+import type { PlaylistItem } from '@/utils/drive115/api/entity'
 import { useAsyncState } from '@vueuse/core'
 import { reactive } from 'vue'
-import { drive115 } from '../../../utils/drive115'
+import { drive115 } from '@/utils/drive115'
 
 /**
  * 播放列表

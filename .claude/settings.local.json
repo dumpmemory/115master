@@ -3,8 +3,7 @@
     "allow": [
       "Bash(pnpm eslint:*)",
       "Bash(pnpm lint:fix:*)",
-      "Bash(pnpm type-check:*)",
-      "Bash(pnpm lint:*)"
+      "Bash(pnpm type-check:*)"
     ]
   }
 }

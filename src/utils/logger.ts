@@ -1,4 +1,4 @@
-import PKG from '../../package.json'
+import PKG from '@/../package.json'
 
 /**
  * 日志条目接口

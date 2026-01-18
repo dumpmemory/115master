@@ -1,12 +1,12 @@
-import type { HudMessage } from '../components/HUD/index'
 import type { PlayerContext } from './usePlayerProvide'
+import type { HudMessage } from '@/components/XPlayer/components/HUD/index'
 import { computed, h, onUnmounted, shallowRef, watch } from 'vue'
-import SubtitleDisplay from '../components/SubtitleDisplay.vue'
+import SubtitleDisplay from '@/components/XPlayer/components/SubtitleDisplay.vue'
 import {
   ICONS,
-} from '../index.const'
-import { getVolumeIcon } from '../utils/icon'
-import { formatTime } from '../utils/time'
+} from '@/components/XPlayer/index.const'
+import { getVolumeIcon } from '@/components/XPlayer/utils/icon'
+import { formatTime } from '@/components/XPlayer/utils/time'
 
 /** 消息持续时间选项 */
 const DurationOptions = {

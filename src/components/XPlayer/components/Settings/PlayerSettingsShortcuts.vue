@@ -52,11 +52,11 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { computed, shallowRef } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
-import { ICONS } from '../../index.const'
-import ShortcutsItem from '../Shortcuts/components/ShortcutsItem.vue'
-import { ACTION_GROUPS, EXPORT_FILE_PREFIX } from '../Shortcuts/shortcuts.const'
+import ShortcutsItem from '@/components/XPlayer/components/Shortcuts/components/ShortcutsItem.vue'
+import { ACTION_GROUPS, EXPORT_FILE_PREFIX } from '@/components/XPlayer/components/Shortcuts/shortcuts.const'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { ICONS } from '@/components/XPlayer/index.const'
+import { clsx } from '@/utils/clsx'
 
 const styles = clsx({
   container: [

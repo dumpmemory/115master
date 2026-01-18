@@ -1,5 +1,5 @@
-import type { M3u8Item } from '../../types/player'
 import type { NormalApi, ProApi, WebApi } from './api'
+import type { M3u8Item } from '@/types/player'
 import { GM_openInTab } from '$'
 import {
   APS_URL_115,
@@ -7,12 +7,12 @@ import {
   PRO_API_URL_115,
   VOD_URL_115,
   WEB_API_URL_115,
-} from '../../constants/115'
-import { qualityCodeMap } from '../../constants/quality'
-import { is115Browser } from '../platform'
-import { fetchRequest } from '../request/fetchRequest'
-import { GMRequest } from '../request/gmRequst'
-import { getXUrl } from '../url'
+} from '@/constants/115'
+import { qualityCodeMap } from '@/constants/quality'
+import { is115Browser } from '@/utils/platform'
+import { fetchRequest } from '@/utils/request/fetchRequest'
+import { GMRequest } from '@/utils/request/gmRequst'
+import { getXUrl } from '@/utils/url'
 import { Crypto115 } from './crypto'
 
 /**

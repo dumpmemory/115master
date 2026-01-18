@@ -18,7 +18,7 @@
 <script setup lang="ts">
 import type { FileActionMenuProps } from './FileActionMenu.types'
 import { Icon } from '@iconify/vue'
-import { clsx } from '../../../../utils/clsx'
+import { clsx } from '@/utils/clsx'
 
 const props = defineProps<FileActionMenuProps>()
 

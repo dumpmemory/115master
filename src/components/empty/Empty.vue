@@ -23,8 +23,8 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { computed } from 'vue'
-import { ICON_EMPTY } from '../../icons'
-import { clsx } from '../../utils/clsx'
+import { ICON_EMPTY } from '@/icons'
+import { clsx } from '@/utils/clsx'
 
 interface Props {
   /** 描述文本 */

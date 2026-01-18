@@ -50,15 +50,15 @@
 </template>
 
 <script setup lang="ts">
-import type { Entity } from '../../../../utils/drive115'
+import type { Entity } from '@/utils/drive115'
 import { Icon } from '@iconify/vue'
 import { computed, shallowRef } from 'vue'
-import LoadingError from '../../../../components/LoadingError/index.vue'
-import { formatTime } from '../../../../components/XPlayer/utils/time'
-import { useSmartVideoCover } from '../../../../hooks/useVideoCover'
-import { ICON_STAR_FILL } from '../../../../icons'
-import { clsx } from '../../../../utils/clsx'
-import { formatFileSize } from '../../../../utils/format'
+import LoadingError from '@/components/LoadingError/index.vue'
+import { formatTime } from '@/components/XPlayer/utils/time'
+import { useSmartVideoCover } from '@/hooks/useVideoCover'
+import { ICON_STAR_FILL } from '@/icons'
+import { clsx } from '@/utils/clsx'
+import { formatFileSize } from '@/utils/format'
 
 const props = defineProps<{
   item: Entity.PlaylistItem

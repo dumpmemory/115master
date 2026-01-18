@@ -16,9 +16,9 @@
 </template>
 
 <script setup lang="ts">
-import { clsx } from '../../../../utils/clsx'
-import { PlayerCoreType } from '../../hooks/playerCore/types'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
+import { PlayerCoreType } from '@/components/XPlayer/hooks/playerCore/types'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { clsx } from '@/utils/clsx'
 
 /** 样式抽象 */
 const styles = clsx({

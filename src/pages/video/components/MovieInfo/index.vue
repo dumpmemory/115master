@@ -225,13 +225,13 @@
 </template>
 
 <script lang="ts" setup>
-import type { useDataMovieInfo } from '../../data/useDataMovieInfo'
+import type { useDataMovieInfo } from '@/pages/video/data/useDataMovieInfo'
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
 import { computed, nextTick, ref, watch } from 'vue'
-import Empty from '../../../../components/empty/Empty.vue'
-import LoadingError from '../../../../components/LoadingError/index.vue'
-import { clsx } from '../../../../utils/clsx'
-import { formatDate, formatDuration } from '../../../../utils/format'
+import Empty from '@/components/empty/Empty.vue'
+import LoadingError from '@/components/LoadingError/index.vue'
+import { clsx } from '@/utils/clsx'
+import { formatDate, formatDuration } from '@/utils/format'
 import CopyButton from './components/CopyButton.vue'
 import 'photoswipe/style.css'
 

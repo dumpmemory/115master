@@ -81,7 +81,7 @@ pnpm lint:inspector   # ESLint 配置检查器
 
 ### Directory Structure
 
-```
+```txt
 src/
 ├── main.ts                    # 入口文件，路由匹配和页面初始化
 ├── pages/
@@ -117,7 +117,7 @@ src/
 #### 1. Routing System
 
 - 使用 `glob-to-regexp` 进行模式匹配
-- 路由规则定义在 `src/main.ts`
+- 路由规则定义在 `@/main.ts`
 - 每个 URL 模式对应一个页面处理函数
 
 #### 2. Page Modes
@@ -127,7 +127,7 @@ src/
 
 #### 3. Component Organization
 
-```
+```txt
 ComponentName/
 ├── components/    # 子组件
 ├── hooks/         # Composition API 逻辑
@@ -168,7 +168,7 @@ MUST:
 MUST use `clsx` utility to abstract Tailwind classes:
 
 ```typescript
-import { clsx } from '../../utils/clsx'
+import { clsx } from '@/utils/clsx'
 
 const styles = clsx({
   container: {
@@ -268,8 +268,8 @@ MUST:
 **Management Rules**:
 
 1. 集中定义在:
-   - `src/icons/index.ts`
-   - `src/components/XPlayer/icons/icons.const.ts`
+   - `@/icons/index.ts`
+   - `@/components/XPlayer/icons/icons.const.ts`
 2. 命名约定: `ICON_` 前缀 + 语义化名称
    - Example: `ICON_PLAY`, `ICON_SETTINGS`
 
@@ -303,25 +303,25 @@ MUST:
 
 ### Add New Page
 
-1. 在 `src/pages/` 创建页面目录
-2. 在 `src/constants/route.match.ts` 添加路由匹配规则
-3. 在 `src/main.ts` 的 `routeMatch` 数组中注册页面
+1. 在 `@/pages/` 创建页面目录
+2. 在 `@/constants/route.match.ts` 添加路由匹配规则
+3. 在 `@/main.ts` 的 `routeMatch` 数组中注册页面
 
 ### Add New Mod (Home Feature)
 
-1. 在 `src/pages/home/` 创建 Mod 目录
+1. 在 `@/pages/home/` 创建 Mod 目录
 2. 创建类继承 `BaseMod`，实现 `destroy()` 方法
-3. 在 `src/pages/home/index.ts` 的 `ModManager` 中注册
+3. 在 `@/pages/home/index.ts` 的 `ModManager` 中注册
 
 ### Add Player Feature
 
-1. 在 `src/components/XPlayer/components/` 添加子组件
-2. 在 `src/components/XPlayer/hooks/` 添加逻辑
-3. 在 `src/components/XPlayer/events/` 注册事件
+1. 在 `@/components/XPlayer/components/` 添加子组件
+2. 在 `@/components/XPlayer/hooks/` 添加逻辑
+3. 在 `@/components/XPlayer/events/` 注册事件
 
 ### Add Cache
 
-1. 在 `src/utils/cache/` 创建缓存类
+1. 在 `@/utils/cache/` 创建缓存类
 2. 继承或参考 `GMRequestCache` 实现
 3. 使用 `localforage` 持久化存储
 
@@ -331,7 +331,7 @@ MUST:
 
 ### vite-plugin-monkey
 
-- **Entry**: `src/main.ts`
+- **Entry**: `@/main.ts`
 - **Output**: `dist/115master.user.js`
 - **CDN**: 使用 CDN 加载外部依赖 (vue, lodash, localforage)
 - **CORS**: 配置跨域访问域名和资源
@@ -350,6 +350,22 @@ MUST:
 - **Block Order**: 强制 template -> script -> style
 - **Comments**: 自动转换为 JSDoc 风格
 
+### Path Alias
+
+**Alias**: `@/*` → `src/*`
+
+**导入规则**:
+
+```typescript
+// ✅ 跨目录 - 使用 @/ 别名
+import { usePlayerProvide } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { cache } from '@/utils/cache/core'
+
+// ✅ 同目录或子目录 - 使用相对路径
+import { BaseMod } from './BaseMod'
+import { useContextMenu } from './hooks/useContextMenu'
+```
+
 ---
 
 ## SPECIAL NOTES
@@ -360,14 +376,14 @@ MUST:
 
 ### 115 API
 
-- API 封装在 `src/utils/drive115/`
+- API 封装在 `@/utils/drive115/`
 - 使用 GM_xmlhttpRequest 进行跨域请求
 - 注意 API 限制和缓存策略
 
 ### Subtitle System
 
 - 支持在线字幕加载
-- 字幕源配置在 `src/utils/subtitle/`
+- 字幕源配置在 `@/utils/subtitle/`
 - 支持多种字幕格式
 
 ### Video Thumbnails

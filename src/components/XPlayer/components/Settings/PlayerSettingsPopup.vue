@@ -46,12 +46,12 @@
 </template>
 
 <script setup lang="ts">
-import type { SettingsTab } from '../../hooks/useContextMenu'
+import type { SettingsTab } from '@/components/XPlayer/hooks/useContextMenu'
 import { Icon } from '@iconify/vue'
 import { ref, watch } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { ICONS } from '../../index.const'
-import Popup from '../Popup/index.vue'
+import Popup from '@/components/XPlayer/components/Popup/index.vue'
+import { ICONS } from '@/components/XPlayer/index.const'
+import { clsx } from '@/utils/clsx'
 import PlayerSettingsPlay from './PlayerSettingsPlay.vue'
 import PlayerSettingsShortcuts from './PlayerSettingsShortcuts.vue'
 

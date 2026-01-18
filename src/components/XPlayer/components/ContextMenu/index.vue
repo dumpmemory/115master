@@ -48,10 +48,10 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { clsx } from '../../../../utils/clsx'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
-import Popup from '../Popup/index.vue'
-import PlayerSettingsPopup from '../Settings/PlayerSettingsPopup.vue'
+import Popup from '@/components/XPlayer/components/Popup/index.vue'
+import PlayerSettingsPopup from '@/components/XPlayer/components/Settings/PlayerSettingsPopup.vue'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { clsx } from '@/utils/clsx'
 import AboutPopup from './AboutPopup.vue'
 
 defineSlots<{

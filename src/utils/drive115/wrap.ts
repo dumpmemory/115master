@@ -1,6 +1,6 @@
 import type { WebApi } from './api'
 import type { DownloadResult } from './core'
-import { appLogger } from '../logger'
+import { appLogger } from '@/utils/logger'
 import { Drive115Core } from './core'
 
 /** 115驱动的包装 */

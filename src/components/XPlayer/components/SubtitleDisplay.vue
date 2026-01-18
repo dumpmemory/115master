@@ -41,8 +41,8 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { clsx } from '../../../utils/clsx'
-import { ICON_DOWNLOAD, ICON_VIEW } from '../icons/icons.const'
+import { ICON_DOWNLOAD, ICON_VIEW } from '@/components/XPlayer/icons/icons.const'
+import { clsx } from '@/utils/clsx'
 
 interface Props {
   label: string

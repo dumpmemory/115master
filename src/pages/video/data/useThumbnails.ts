@@ -1,23 +1,23 @@
+import type { usePreferences } from './usePreferences'
 import type {
   ThumbnailFrame,
   VideoSource,
-} from '../../../components/XPlayer/types'
-import type { LaneConfig } from '../../../utils/scheduler'
-import type { usePreferences } from './usePreferences'
+} from '@/components/XPlayer/types'
+import type { LaneConfig } from '@/utils/scheduler'
 import { tryOnUnmounted } from '@vueuse/core'
 import { chain } from 'lodash'
 import { shallowRef } from 'vue'
-import { FRIENDLY_ERROR_MESSAGE } from '../../../constants'
-import { intervalArray } from '../../../utils/array'
-import { M3U8ClipperNew } from '../../../utils/clipper/m3u8Clipper'
-import { getImageResize } from '../../../utils/image'
-import { appLogger } from '../../../utils/logger'
+import { FRIENDLY_ERROR_MESSAGE } from '@/constants'
+import { intervalArray } from '@/utils/array'
+import { M3U8ClipperNew } from '@/utils/clipper/m3u8Clipper'
+import { getImageResize } from '@/utils/image'
+import { appLogger } from '@/utils/logger'
 import {
 
   Scheduler,
   SchedulerError,
-} from '../../../utils/scheduler'
-import { blurTime } from '../../../utils/time'
+} from '@/utils/scheduler'
+import { blurTime } from '@/utils/time'
 
 /** 缩略图生成器配置 */
 const CLIPPER_OPTIONS = {

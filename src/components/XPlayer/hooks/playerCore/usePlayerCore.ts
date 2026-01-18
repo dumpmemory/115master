@@ -1,6 +1,6 @@
-import type { PlayerContext } from '../usePlayerProvide'
+import type { PlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
 import { syncRef, toReactive } from '@vueuse/core'
-import { EVENTS } from '../../events'
+import { EVENTS } from '@/components/XPlayer/events'
 import { PlayerCoreType } from './types'
 import { useAvPlayerCore } from './useAvPlayerCore'
 import { useHlsPlayerCore } from './useHlsPlayerCore'

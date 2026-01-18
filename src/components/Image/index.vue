@@ -15,11 +15,11 @@
 
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { imageCache } from '../../utils/cache/imageCache'
-import { clsx } from '../../utils/clsx'
-import { blobToBase64, compressImage } from '../../utils/image'
-import { GMRequest } from '../../utils/request/gmRequst'
-import LoadingError from '../LoadingError/index.vue'
+import LoadingError from '@/components/LoadingError/index.vue'
+import { imageCache } from '@/utils/cache/imageCache'
+import { clsx } from '@/utils/clsx'
+import { blobToBase64, compressImage } from '@/utils/image'
+import { GMRequest } from '@/utils/request/gmRequst'
 
 interface Props {
   referer?: string

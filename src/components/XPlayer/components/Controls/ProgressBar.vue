@@ -53,9 +53,9 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
-import Thumbnail from '../Thumbnail/index.vue'
+import Thumbnail from '@/components/XPlayer/components/Thumbnail/index.vue'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { clsx } from '@/utils/clsx'
 
 /** 样式抽象 */
 const styles = clsx({

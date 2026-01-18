@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { appLogger } from '../../../../../utils/logger'
+import { appLogger } from '@/utils/logger'
 
 /**
  * 提供复制文本到剪贴板的功能

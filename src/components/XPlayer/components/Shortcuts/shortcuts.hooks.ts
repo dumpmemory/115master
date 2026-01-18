@@ -1,5 +1,4 @@
 import type { ComputedRef } from 'vue'
-import type { PlayerContext } from '../../hooks/usePlayerProvide'
 import type {
   ActionKey,
   ActionKeyBindings,
@@ -8,6 +7,7 @@ import type {
   KeyBindings,
   ShortcutsPreference,
 } from './shortcuts.types'
+import type { PlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
 import {
   tryOnUnmounted,
   useEventListener,

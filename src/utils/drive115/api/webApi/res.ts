@@ -1,4 +1,4 @@
-import type { MoviesSubtitleItem, PathItem, PlaylistItem } from '../entity'
+import type { MoviesSubtitleItem, PathItem, PlaylistItem } from '@/utils/drive115/api/entity'
 
 /** 基础类型 */
 type Base<T> = {

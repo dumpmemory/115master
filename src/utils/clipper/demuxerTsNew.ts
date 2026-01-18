@@ -5,7 +5,7 @@ import {
   NaluTypes,
   TSDemux,
 } from '@cbingbing/demuxer'
-import { appLogger } from '../logger'
+import { appLogger } from '@/utils/logger'
 
 /** 解复用后的数据 */
 export interface AvcFrameData {

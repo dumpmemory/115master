@@ -1,3 +1,4 @@
+import { resolve } from 'node:path'
 import * as transformer from '@libmedia/cheap/build/transformer'
 import typescript from '@rollup/plugin-typescript'
 import tailwindcss from '@tailwindcss/vite'
@@ -21,6 +22,11 @@ const _cdn = cdn.jsdelivrFastly
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src'),
+    },
+  },
   build: {
     minify: true,
   },

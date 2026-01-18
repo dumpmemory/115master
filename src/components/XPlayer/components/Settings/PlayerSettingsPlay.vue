@@ -140,8 +140,8 @@
 </template>
 
 <script setup lang="ts">
-import { clsx } from '../../../../utils/clsx'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { clsx } from '@/utils/clsx'
 
 const styles = clsx({
   container: [

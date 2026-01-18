@@ -29,17 +29,17 @@
  * @description 用于录制、显示、移除快捷键
  */
 
-import type { KeyBindingStr } from '../shortcuts.types'
+import type { KeyBindingStr } from '@/components/XPlayer/components/Shortcuts/shortcuts.types'
 import { Icon } from '@iconify/vue'
 import { computed, shallowRef } from 'vue'
-import { clsx } from '../../../../../utils/clsx'
-import { usePlayerContext } from '../../../hooks/usePlayerProvide'
-import { ICONS } from '../../../index.const'
 import {
   formatKeyDisplay,
   getKeyBindingStringFromEvent,
   isOnlyModifier,
-} from '../shortcuts.utils'
+} from '@/components/XPlayer/components/Shortcuts/shortcuts.utils'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { ICONS } from '@/components/XPlayer/index.const'
+import { clsx } from '@/utils/clsx'
 
 const props = withDefaults(defineProps<{
   modelValue?: KeyBindingStr

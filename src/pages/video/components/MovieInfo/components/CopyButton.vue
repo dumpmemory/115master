@@ -12,9 +12,9 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-import { ICON_COPY } from '../../../../../icons'
-import { clsx } from '../../../../../utils/clsx'
-import { useCopy } from '../hooks/useCopy'
+import { ICON_COPY } from '@/icons'
+import { useCopy } from '@/pages/video/components/MovieInfo/hooks/useCopy'
+import { clsx } from '@/utils/clsx'
 
 const props = defineProps<{
   /** 要复制的文本 */

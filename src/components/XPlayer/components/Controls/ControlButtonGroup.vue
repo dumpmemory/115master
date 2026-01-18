@@ -56,8 +56,8 @@
  */
 import { useElementHover, useTimeoutFn } from '@vueuse/core'
 import { computed, nextTick, onMounted, shallowRef, watch } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { clsx } from '@/utils/clsx'
 
 interface Props {
   direction?: 'left' | 'right'

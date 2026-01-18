@@ -42,7 +42,7 @@
 <script setup lang="ts">
 import { GM_info } from '$'
 import { computed } from 'vue'
-import { clsx } from '../../../../utils/clsx'
+import { clsx } from '@/utils/clsx'
 
 const styles = clsx({
   // 容器样式

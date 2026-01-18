@@ -1,8 +1,8 @@
-import { actressFaceDB } from '../../../../utils/actressFaceDB'
-import { imageCache } from '../../../../utils/cache'
-import { compressImage } from '../../../../utils/image'
-import { appLogger } from '../../../../utils/logger'
-import { FileListType } from '../../types'
+import { FileListType } from '@/pages/home/types'
+import { actressFaceDB } from '@/utils/actressFaceDB'
+import { imageCache } from '@/utils/cache'
+import { compressImage } from '@/utils/image'
+import { appLogger } from '@/utils/logger'
 import { FileItemModBase } from './base'
 
 /**

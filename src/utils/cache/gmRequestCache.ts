@@ -1,5 +1,5 @@
-import type { RequestOptions } from '../request/types'
-import { appLogger } from '../logger'
+import type { RequestOptions } from '@/utils/request/types'
+import { appLogger } from '@/utils/logger'
 import { CacheCore } from './core'
 import { STORE_NAME } from './core/const'
 

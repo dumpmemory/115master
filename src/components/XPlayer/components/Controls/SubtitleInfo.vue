@@ -26,10 +26,10 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { computed } from 'vue'
-import { clsx } from '../../../../utils/clsx'
-import { usePlayerContext } from '../../hooks/usePlayerProvide'
-import { ICONS } from '../../index.const'
-import SubtitleDisplay from '../SubtitleDisplay.vue'
+import SubtitleDisplay from '@/components/XPlayer/components/SubtitleDisplay.vue'
+import { usePlayerContext } from '@/components/XPlayer/hooks/usePlayerProvide'
+import { ICONS } from '@/components/XPlayer/index.const'
+import { clsx } from '@/utils/clsx'
 
 const { subtitles, controls, progressBar } = usePlayerContext()
 
