@@ -1,4 +1,5 @@
 import type { Core as CoreType, MockjQueryObject } from './core115.types'
+import { unsafeWindow } from '$'
 
 /** 115 官方资源 URL */
 const OFFICIAL_ASSETS = [
@@ -64,8 +65,10 @@ export async function load() {
 
   // 等待 Core 对象加载
   await new Promise<void>((resolve) => {
+    /** 使用 unsafeWindow */
+    const win = getPageWindow()
     const checkCore = () => {
-      if (typeof window !== 'undefined' && (window as any).Core) {
+      if (typeof win !== 'undefined' && (win as any).Core) {
         resolve()
       }
       else {
@@ -88,7 +91,7 @@ export async function load() {
  * 在 Tampermonkey 环境中，直接使用 jQuery 的 AJAX 功能进行 API 调用
  */
 function initUDataAPI() {
-  const win = window as any
+  const win = getPageWindow()
   const $ = win.$
   const Core = win.Core
 
@@ -126,11 +129,12 @@ function initUDataAPI() {
 
 /**
  * 获取页面上下文中的 Core 对象
- * 注意：115 SDK 运行在页面上下文中，需要通过 window 访问
+ * 注意：115 SDK 运行在页面上下文中，需要通过 unsafeWindow 访问
  */
 function getPageWindow(): any {
-  // 115 SDK 注入到页面上下文，需要访问原始的 window
-  return window
+  // 115 SDK 注入到页面上下文，需要访问 unsafeWindow
+  // 不能使用 window（Tampermonkey 沙箱），否则无法访问 Core 对象
+  return unsafeWindow
 }
 
 /**
