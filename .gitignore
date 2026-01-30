@@ -30,3 +30,6 @@ yalc.lock
 
 # vitest
 coverage
+
+# git worktrees
+.worktrees/
