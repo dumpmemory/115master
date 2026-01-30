@@ -54,8 +54,8 @@ importers:
         specifier: ^0.4.1
         version: 0.4.1
       hls.js:
-        specifier: ^1.5.20
-        version: 1.5.20
+        specifier: ^1.6.15
+        version: 1.6.15
       iconify-icon:
         specifier: ^3.0.0
         version: 3.0.0
@@ -1831,8 +1831,8 @@ packages:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
 
-  hls.js@1.5.20:
-    resolution: {integrity: sha512-uu0VXUK52JhihhnN/MVVo1lvqNNuhoxkonqgO3IpjvQiGpJBdIXMGkofjQb/j9zvV7a1SW8U9g1FslWx/1HOiQ==}
+  hls.js@1.6.15:
+    resolution: {integrity: sha512-E3a5VwgXimGHwpRGV+WxRTKeSp2DW5DI5MWv34ulL3t5UNmyJWCQ1KmLEHbYzcfThfXG8amBL+fCYPneGHC4VA==}
 
   html-escaper@2.0.2:
     resolution: {integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==}
@@ -4655,7 +4655,7 @@ snapshots:
 
   he@1.2.0: {}
 
-  hls.js@1.5.20: {}
+  hls.js@1.6.15: {}
 
   html-escaper@2.0.2: {}
 
