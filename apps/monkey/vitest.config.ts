@@ -8,11 +8,8 @@ export default defineConfig({
     },
   },
   test: {
-    // 测试环境
     environment: 'node',
-    // 测试文件匹配模式
     include: ['**/__tests__/**/*.test.ts'],
-    // 代码覆盖率配置
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html'],

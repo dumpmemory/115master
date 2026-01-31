@@ -15,6 +15,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - vite-plugin-monkey (打包工具)
 - Tailwind CSS + DaisyUI (样式)
 - localforage (IndexedDB 存储)
+- pnpm workspaces + Turbo (Monorepo)
 
 **Core Features**:
 
@@ -69,20 +70,40 @@ pnpm analyze          # 构建分析 (生成 stats.html)
 pnpm lint:inspector   # ESLint 配置检查器
 ```
 
+### Monorepo Commands
+
+```bash
+pnpm clean            # 清理所有构建产物和 node_modules
+turbo run dev --filter @115master/monkey     # 仅运行 monkey 应用
+turbo run build --filter @115master/shared   # 仅构建 shared 包
+```
+
 ---
 
 ## PROJECT ARCHITECTURE
 
-### Core Principles
-
-1. **页面级模块化**: 每个页面 (Home/Video/Magnet) 独立管理自己的组件、逻辑和数据
-2. **修改器模式**: 首页使用 Mod 管理器 (BaseMod) 组织和隔离功能模块
-3. **路由匹配**: 基于 glob 模式的路由匹配系统，非传统路由
-
-### Directory Structure
+### Monorepo Structure
 
 ```txt
-src/
+├── apps/                      # 应用程序目录
+│   └── monkey/                # Tampermonkey 用户脚本应用
+│       ├── src/               # 源代码
+│       ├── package.json
+│       ├── tsconfig.json
+│       └── vite.config.ts
+├── packages/                  # 共享包目录
+│   ├── eslint-config/         # ESLint 共享配置
+│   ├── tsconfig/              # TypeScript 共享配置
+│   └── shared/                # 共享工具库
+├── package.json               # 根 package.json
+├── pnpm-workspace.yaml        # pnpm 工作区配置
+└── turbo.json                 # Turbo 任务配置
+```
+
+### Apps/Monkey Directory Structure
+
+```txt
+apps/monkey/src/
 ├── main.ts                    # 入口文件，路由匹配和页面初始化
 ├── pages/
 │   ├── home/                  # 首页 (Mod 模式)
@@ -117,7 +138,7 @@ src/
 #### 1. Routing System
 
 - 使用 `glob-to-regexp` 进行模式匹配
-- 路由规则定义在 `@/main.ts`
+- 路由规则定义在 `apps/monkey/src/main.ts`
 - 每个 URL 模式对应一个页面处理函数
 
 #### 2. Page Modes
@@ -303,60 +324,91 @@ MUST:
 
 ### Add New Page
 
-1. 在 `@/pages/` 创建页面目录
-2. 在 `@/constants/route.match.ts` 添加路由匹配规则
-3. 在 `@/main.ts` 的 `routeMatch` 数组中注册页面
+1. 在 `apps/monkey/src/pages/` 创建页面目录
+2. 在 `apps/monkey/src/constants/route.match.ts` 添加路由匹配规则
+3. 在 `apps/monkey/src/main.ts` 的 `routeMatch` 数组中注册页面
 
 ### Add New Mod (Home Feature)
 
-1. 在 `@/pages/home/` 创建 Mod 目录
+1. 在 `apps/monkey/src/pages/home/` 创建 Mod 目录
 2. 创建类继承 `BaseMod`，实现 `destroy()` 方法
-3. 在 `@/pages/home/index.ts` 的 `ModManager` 中注册
+3. 在 `apps/monkey/src/pages/home/index.ts` 的 `ModManager` 中注册
 
 ### Add Player Feature
 
-1. 在 `@/components/XPlayer/components/` 添加子组件
-2. 在 `@/components/XPlayer/hooks/` 添加逻辑
-3. 在 `@/components/XPlayer/events/` 注册事件
+1. 在 `apps/monkey/src/components/XPlayer/components/` 添加子组件
+2. 在 `apps/monkey/src/components/XPlayer/hooks/` 添加逻辑
+3. 在 `apps/monkey/src/components/XPlayer/events/` 注册事件
 
 ### Add Cache
 
-1. 在 `@/utils/cache/` 创建缓存类
+1. 在 `apps/monkey/src/utils/cache/` 创建缓存类
 2. 继承或参考 `GMRequestCache` 实现
 3. 使用 `localforage` 持久化存储
+
+### Add New Package
+
+1. 在 `packages/` 目录创建新包目录
+2. 创建 `package.json`，name 使用 `@115master/` 前缀
+3. 添加 `tsconfig.json` 继承 `@115master/tsconfig`
+4. 在 `pnpm-workspace.yaml` 确认包路径已包含
+5. 运行 `pnpm install` 安装依赖
 
 ---
 
 ## IMPORTANT CONFIGURATIONS
 
+### Monorepo Configuration
+
+**pnpm-workspace.yaml**:
+
+```yaml
+packages:
+  - apps/*
+  - packages/*
+```
+
+**turbo.json**:
+
+- `build`: 构建任务，依赖上游构建
+- `dev`: 开发模式，持久运行
+- `type-check`: 类型检查
+- `lint`/`lint:fix`: 代码检查
+- `test`: 测试任务
+
 ### vite-plugin-monkey
 
-- **Entry**: `@/main.ts`
-- **Output**: `dist/115master.user.js`
+- **Entry**: `apps/monkey/src/main.ts`
+- **Output**: `apps/monkey/dist/115master.user.js`
 - **CDN**: 使用 CDN 加载外部依赖 (vue, lodash, localforage)
 - **CORS**: 配置跨域访问域名和资源
 
 ### TypeScript
 
-- `tsconfig.json`: 项目引用配置
-- `tsconfig.app.json`: 应用代码配置
-- `tsconfig.node.json`: 构建脚本配置
+- `packages/tsconfig/`: 共享 TypeScript 配置
+  - `base.json`: 基础配置
+  - `vue-app.json`: Vue 应用配置
+  - `node.json`: Node.js 配置
 - **Custom Transformer**: `@libmedia/cheap`
 
 ### ESLint
 
 - **Base**: `@antfu/eslint-config`
+- **Shared Config**: `packages/eslint-config/`
 - **Tailwind CSS**: 启用 Tailwind CSS 插件
 - **Block Order**: 强制 template -> script -> style
 - **Comments**: 自动转换为 JSDoc 风格
 
 ### Path Alias
 
-**Alias**: `@/*` → `src/*`
+**Apps/Monkey Alias**: `@/*` → `apps/monkey/src/*`
 
 **导入规则**:
 
 ```typescript
+// ✅ Workspace 包导入
+import { someUtil } from '@115master/shared'
+
 // ✅ 跨目录 - 使用 @/ 别名
 import { usePlayerProvide } from '@/components/XPlayer/hooks/usePlayerProvide'
 import { cache } from '@/utils/cache/core'
@@ -407,6 +459,7 @@ MUST: 当需要依赖库文档时，使用以下方式主动查询：
 ### Key Dependencies Reference
 
 **Framework**: Vue 3, Vite, TypeScript
+**Monorepo**: pnpm workspaces, Turbo
 **Styling**: Tailwind CSS, DaisyUI
 **Vue Ecosystem**: @vueuse/core, @iconify/vue
 **Utilities**: lodash, dayjs, mitt, localforage, type-fest

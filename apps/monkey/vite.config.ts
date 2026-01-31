@@ -68,7 +68,7 @@ export default defineConfig({
         'homepage': PKG.homepage,
         'author': PKG.author,
         'description': PKG.description,
-        'supportURL': PKG.bugs.url,
+        'supportURL': PKG.bugs?.url,
         'run-at': 'document-start',
         'include': [
           'https://115.com/?ct*',

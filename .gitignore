@@ -33,3 +33,6 @@ coverage
 
 # git worktrees
 .worktrees/
+
+# Turborepo
+.turbo
