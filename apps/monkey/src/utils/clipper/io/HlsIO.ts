@@ -92,7 +92,7 @@ export class HlsIO extends FetchIO {
     })
     const m3u8Text = await response.text()
     const parser = new Parser({
-      url: this.info.url,
+      uri: this.info.url,
     })
     parser.push(m3u8Text)
     parser.end()

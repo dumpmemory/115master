@@ -1,3 +1,5 @@
+// 测试 monorepo 共享包引用
+import { TEST_VALUE } from '@115master/shared'
 import globToRegex from 'glob-to-regexp'
 import ROUTE_MATCH from './constants/route.match'
 import HomePage from './pages/home/index'
@@ -5,6 +7,8 @@ import { magnetPage, registerMagnetProtocolHandler } from './pages/magnet'
 import { videoPage, videoTokenPage } from './pages/video'
 import { checkUserAgent } from './utils/checkUserAgent'
 import { debugInfo } from './utils/debugInfo'
+
+console.log('[115Master] Shared package:', TEST_VALUE)
 
 /** 设置 document.domain 以支持 115 Bridge 跨域通信 */
 /** 必须在任何代码执行之前设置 */

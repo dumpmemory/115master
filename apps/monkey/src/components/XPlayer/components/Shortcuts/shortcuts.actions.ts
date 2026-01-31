@@ -452,7 +452,7 @@ const ENHANCE_COLOR_ACTION_MAP = withGroup({
     name: '禁用HDR',
     keydown: (ctx) => {
       ctx.videoEnhance.disabledHDR.value
-      = !ctx.videoEnhance.disabledHDR.value
+        = !ctx.videoEnhance.disabledHDR.value
     },
   },
 } satisfies ActionMap, ACTION_GROUPS.ENHANCE)
@@ -476,7 +476,7 @@ const OTHER_ACTION_MAP = withGroup({
     name: 'Statistics',
     keydown: (ctx) => {
       ctx.statistics.visible.value
-      = !ctx.statistics.visible.value
+        = !ctx.statistics.visible.value
     },
   },
 } satisfies ActionMap, ACTION_GROUPS.OTHER)
