@@ -1,7 +1,9 @@
 {
   "name": "@115master/tsconfig",
+  "type": "module",
   "version": "0.0.0",
   "private": true,
+  "packageManager": "pnpm@9.15.9",
   "description": "Shared TypeScript configurations",
   "author": "cbingb666",
   "license": "MIT",
@@ -14,13 +16,19 @@
   "bugs": {
     "url": "https://github.com/cbingb666/115master/issues"
   },
+  "files": [
+    "base.json",
+    "node.json",
+    "vue-app.json"
+  ],
   "engines": {
     "node": ">=20.12"
   },
-  "packageManager": "pnpm@9.15.9",
-  "files": [
-    "base.json",
-    "vue-app.json",
-    "node.json"
-  ]
+  "scripts": {
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
+  },
+  "devDependencies": {
+    "@115master/eslint-config": "workspace:*"
+  }
 }

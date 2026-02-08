@@ -1,3 +1,3 @@
-import config from '@115master/eslint-config'
+import { baseConfig, tailwindConfig } from '@115master/eslint-config'
 
-export default config
+export default baseConfig.append(...tailwindConfig)
