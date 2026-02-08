@@ -36,3 +36,6 @@ coverage
 
 # Turborepo
 .turbo
+
+# Local Claude settings
+.claude/settings.local.json

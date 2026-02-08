@@ -1,9 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(pnpm eslint:*)",
-      "Bash(pnpm lint:fix:*)",
-      "Bash(pnpm type-check:*)"
-    ]
-  }
-}
