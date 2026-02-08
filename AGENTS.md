@@ -70,6 +70,23 @@ pnpm analyze          # 构建分析 (生成 stats.html)
 pnpm lint:inspector   # ESLint 配置检查器
 ```
 
+### Changesets Commands
+
+```bash
+pnpm changeset            # 创建变更记录
+pnpm version-packages     # 消费 changesets，更新版本号和 CHANGELOG
+pnpm release              # 发布包
+```
+
+**Changesets 工作流**:
+
+1. 开发完功能/修复后，运行 `pnpm changeset`
+2. 选择受影响的包, 如:（`@115master/monkey`、`@115master/shared`）
+3. 选择版本类型：`patch`（修复）/ `minor`（功能）/ `major`（破坏性变更）
+4. 填写变更描述（会生成 `.changeset/xxx.md` 文件，需要一起提交）
+5. 发版时运行 `pnpm version-packages` 自动更新版本号和 CHANGELOG.md
+6. 配置使用 `@changesets/changelog-github`，CHANGELOG 会自动关联 PR 和贡献者
+
 ### Monorepo Commands
 
 ```bash
