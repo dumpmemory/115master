@@ -1,0 +1,95 @@
+name: Release
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  ci:
+    name: CI Checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+      - run: pnpm lint
+      - run: pnpm type-check
+      - run: pnpm test
+
+  release:
+    name: Release
+    needs: ci
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: ./.github/actions/setup
+
+      - name: Version Packages
+        run: pnpm version-packages
+
+      - name: Get Version
+        id: version
+        run: |
+          VERSION=$(node -p "require('./apps/monkey/package.json').version")
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "📦 Version: $VERSION"
+
+      - name: Check for Changes
+        id: changes
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+            echo "⚠️ No changesets found, nothing to release."
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Abort if No Changes
+        if: steps.changes.outputs.has_changes == 'false'
+        run: |
+          echo "::error::No pending changesets found. Run 'pnpm changeset' to create one before releasing."
+          exit 1
+
+      - name: Commit Version Changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "release: v${{ steps.version.outputs.version }}"
+          git push
+
+      - name: Build
+        run: pnpm build
+
+      - name: Create Tag
+        run: |
+          git tag "v${{ steps.version.outputs.version }}"
+          git push origin "v${{ steps.version.outputs.version }}"
+
+      - name: Extract Release Notes
+        id: notes
+        run: |
+          NOTES=$(node .github/scripts/extract-release-notes.mjs "${{ steps.version.outputs.version }}")
+          {
+            echo "body<<RELEASE_NOTES_EOF"
+            echo "$NOTES"
+            echo "RELEASE_NOTES_EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: v${{ steps.version.outputs.version }}
+          body: ${{ steps.notes.outputs.body }}
+          files: |
+            apps/monkey/dist/115master.user.js
+            apps/monkey/dist/115master.meta.js
