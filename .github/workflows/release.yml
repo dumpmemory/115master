@@ -95,3 +95,18 @@ jobs:
           files: |
             apps/monkey/dist/115master.user.js
             apps/monkey/dist/115master.meta.js
+
+      - name: Notify Telegram
+        if: success()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          format: markdown
+          disable_web_page_preview: true
+          message: |
+            🚀 *115Master v${{ steps.version.outputs.version }}* Released! -- From Bot
+
+            ${{ steps.notes.outputs.body }}
+
+            [GitHub Release](https://github.com/${{ github.repository }}/releases/tag/v${{ steps.version.outputs.version }}) | [Install Script](https://github.com/${{ github.repository }}/releases/download/v${{ steps.version.outputs.version }}/115master.user.js)
