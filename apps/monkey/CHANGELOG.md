@@ -1,5 +1,11 @@
 # @115master/monkey
 
+## 1.10.1
+
+### Patch Changes
+
+- [#323](https://github.com/cbingb666/115master/pull/323) [`825962a`](https://github.com/cbingb666/115master/commit/825962a9ec0822baa4e74e2911cd47666cfaa323) Thanks [@cbingb666](https://github.com/cbingb666)! - update descrition in package.json
+
 ## 1.10.0
 
 ### Minor Changes
