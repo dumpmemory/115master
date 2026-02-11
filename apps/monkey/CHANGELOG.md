@@ -1,5 +1,11 @@
 # @115master/monkey
 
+## 1.10.2
+
+### Patch Changes
+
+- [`4e2c652`](https://github.com/cbingb666/115master/commit/4e2c65247ab301f94f9b4ab2627c1fce0b71e182) Thanks [@cbingb666](https://github.com/cbingb666)! - fix(monkey): The playlist was not updated after refreshing the playback page following the movement of the file (#315)
+
 ## 1.10.1
 
 ### Patch Changes
