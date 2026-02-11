@@ -11,7 +11,6 @@ import GM_VALUE_KEY from '@/constants/gm.value.key'
 export function goToPlayer(playingVideoInfo: PlayingVideoInfo, isOpenInTab = false) {
   GM_setValue(GM_VALUE_KEY.PLAYING_VIDEO_INFO, playingVideoInfo)
   const params = new URLSearchParams({
-    cid: playingVideoInfo.cid || '',
     pick_code: playingVideoInfo.pickCode,
   })
   const url = `https://${NORMAL_HOST_155}/web/lixian/master/video/?${params.toString()}`

@@ -2,8 +2,6 @@
 export interface PlayingVideoInfo {
   /** 文件唯一标识 */
   pickCode: string
-  /** 视频ID */
-  cid: string
 }
 
 /** m3u8 视频信息 */

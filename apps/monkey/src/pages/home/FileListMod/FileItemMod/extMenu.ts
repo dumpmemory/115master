@@ -79,7 +79,6 @@ export class FileItemModExtMenu extends FileItemModBase {
           goToPlayer(
             {
               pickCode: this.itemInfo.attributes.pick_code,
-              cid: this.itemInfo.attributes.cid,
             },
             true,
           )

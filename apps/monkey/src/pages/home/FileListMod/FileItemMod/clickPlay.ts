@@ -84,7 +84,6 @@ export class FileItemModClickPlay extends FileItemModBase {
     goToPlayer(
       {
         pickCode: this.itemInfo.attributes.pick_code,
-        cid: this.itemInfo.attributes.cid,
       },
       true,
     )

@@ -17,7 +17,7 @@
 
 ## 功能
 
-**播放器**
+**播放器:**
 
 - Ultra 画质
 - 视频缩略图
@@ -28,7 +28,7 @@
 - 自定义快捷键
 - 视频色彩调整
 
-**文件列表**
+**文件列表:**
 
 - 视频封面
 - 标题显示路径
@@ -38,7 +38,7 @@
 - 文件下载（仅支持单文件）
 - 文件夹鼠标中键新标签页打开
 
-**Magnet**
+**Magnet:**
 
 支持 [任何网站的 Magnet 链接一键唤起离线任务](https://github.com/cbingb666/115master/discussions/238)。
 
@@ -54,14 +54,17 @@
 
 ## 开放功能
 
-支持其他插件或应用唤起 115Master 的播放器，根据下方链接传入
+支持其他插件或应用通过 URL 唤起 115Master 的播放器
 
-示例: `https://115.com/web/lixian/master/video/?cid=${cid}&pick_code=${pick_code}`
+**示例:**
 
-| Query     | Required | Description                      |
-| --------- | -------- | -------------------------------- |
-| cid       | 否       | 目录ID，为空时将无法获取播放列表 |
-| pick_code | 是       | 文件提取码                       |
+`https://115.com/web/lixian/master/video/?pick_code=${pick_code}`
+
+**参数:**
+
+| Query     | Required | Description |
+| --------- | -------- | ----------- |
+| pick_code | 是       | 文件提取码  |
 
 ## 常见问题
 

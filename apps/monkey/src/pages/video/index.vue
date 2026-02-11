@@ -149,7 +149,6 @@ import { controlRightStyles } from '@/components/XPlayer/styles/common'
 import { formatTime } from '@/components/XPlayer/utils/time'
 import { PLUS_VERSION } from '@/constants'
 import { useLockFn } from '@/hooks/useLockFn'
-import { useParamsVideoPage } from '@/hooks/useParams'
 import { ICON_DRIVE_FILE_MOVE, ICON_PLAYLIST, ICON_STAR, ICON_STAR_FILL } from '@/icons'
 import { subtitlePreference } from '@/utils/cache/subtitlePreference'
 import { clsx } from '@/utils/clsx'
@@ -171,6 +170,7 @@ import { useDataHistory } from './data/useDataHistory'
 import { useMark } from './data/useDataMark'
 import { useDataMovieInfo } from './data/useDataMovieInfo'
 import { useDataPlaylist } from './data/useDataPlaylist'
+import { useParamsVideoPage } from './data/useParamsVideoPage'
 import { usePreferences } from './data/usePreferences'
 import { useDataSubtitles } from './data/useSubtitlesData'
 import { useDataThumbnails } from './data/useThumbnails'
@@ -461,11 +461,7 @@ async function handleLocalPlay(player: LocalPlayer) {
 async function changeVideo(item: Entity.PlaylistItem) {
   try {
     changeing.value = true
-    if (!params.cid.value) {
-      throw new Error('cid is required')
-    }
     goToPlayer({
-      cid: params.cid.value,
       pickCode: item.pc,
     })
     params.getParams()
@@ -542,12 +538,8 @@ function onThumbnailRequest(
 /** 加载数据 */
 async function loadData(isFirst = true) {
   const pickCode = toValue(params.pickCode)
-  const cid = toValue(params.cid)
   if (!pickCode) {
     throw new Error('pickCode is required')
-  }
-  if (!params.cid.value) {
-    throw new Error('cid is required')
   }
   try {
     await DataHistory.fetch(pickCode)
@@ -573,6 +565,9 @@ async function loadData(isFirst = true) {
     // 加载文件信息
     DataFileInfo.execute(0, pickCode).then((res) => {
       const avNumber = getAvNumber(res.file_name)
+
+      params.cid.value = res.parent_id
+
       // 设置标题
       useTitle(DataFileInfo.state.file_name || '')
       // 加载番号信息
@@ -582,15 +577,13 @@ async function loadData(isFirst = true) {
       }
       // 加载字幕
       DataSubtitles.execute(0, pickCode, res.file_name, avNumber)
+
+      // 加载播放列表
+      if (isFirst && params.cid.value) {
+        DataPlaylist.execute(0, params.cid.value)
+      }
     }),
   )
-
-  // 加载播放列表
-  if (
-    isFirst && cid
-  ) {
-    task.push(DataPlaylist.execute(0, cid))
-  }
 
   return Promise.allSettled(task)
 }

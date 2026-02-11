@@ -10,14 +10,13 @@ export function useParamsVideoPage() {
   const getParams = () => {
     const params = new URLSearchParams(window.location.search)
     pickCode.value = params.get('pick_code') ?? undefined
-    cid.value = params.get('cid') ?? undefined
   }
 
   getParams()
 
   return {
-    pickCode,
     cid,
+    pickCode,
     getParams,
   }
 }
