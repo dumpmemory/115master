@@ -1,5 +1,11 @@
 # @115master/monkey
 
+## 1.11.0
+
+### Minor Changes
+
+- [#325](https://github.com/cbingb666/115master/pull/325) [`fbfa1b0`](https://github.com/cbingb666/115master/commit/fbfa1b0f156689a66b06f8de67060f59671996e1) Thanks [@WzLYVg387U](https://github.com/WzLYVg387U)! - feat(monkey/playlist): add middle click support for items in breadcrumb and playlist
+
 ## 1.10.2
 
 ### Patch Changes
