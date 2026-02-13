@@ -1,5 +1,11 @@
 # @115master/monkey
 
+## 1.11.1
+
+### Patch Changes
+
+- [#326](https://github.com/cbingb666/115master/pull/326) [`01bd054`](https://github.com/cbingb666/115master/commit/01bd054f0b1698ffe7a4af9dcebe5b80612d3540) Thanks [@cbingb666](https://github.com/cbingb666)! - fix(monkey/xplayer): the player's HUD display cannot switch between play and pause
+
 ## 1.11.0
 
 ### Minor Changes
