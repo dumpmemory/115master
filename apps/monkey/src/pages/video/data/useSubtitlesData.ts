@@ -59,15 +59,16 @@ export function useDataSubtitles() {
       res.data.list.map(async (subtitle) => {
         const url = new URL(subtitle.url)
         url.protocol = 'https:'
+        const isUpload = !!subtitle.file_id
         const res = await fetchRequest.get(url.href)
         const arrayBuffer = await res.arrayBuffer()
         const blob = await convertToUtf8Blob(arrayBuffer)
         return {
-          id: subtitle.sid,
+          id: isUpload ? subtitle.file_id : subtitle.sid,
           url: url.href,
           raw: blob,
           label: `${removeFileExtension(subtitle.title)}`,
-          source: subtitle.file_id ? 'Upload' : 'Built-in',
+          source: isUpload ? 'Upload' : 'Built-in',
           srclang: subtitle.language || 'zh-CN',
           format: subtitle.type,
           kind: 'subtitles' as const,
