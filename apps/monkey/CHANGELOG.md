@@ -1,5 +1,15 @@
 # @115master/monkey
 
+## 1.13.0
+
+### Minor Changes
+
+- [#331](https://github.com/cbingb666/115master/pull/331) [`7023cfc`](https://github.com/cbingb666/115master/commit/7023cfcfb4bb9620b96332fa3d856d10c5073cc0) Thanks [@WzLYVg387U](https://github.com/WzLYVg387U)! - feat(monkey/subtitle): add UTF-8 conversion support for subtitle loading
+
+### Patch Changes
+
+- [#332](https://github.com/cbingb666/115master/pull/332) [`4c7f5bc`](https://github.com/cbingb666/115master/commit/4c7f5bceac61dc043526594ce4c875d69667d923) Thanks [@WzLYVg387U](https://github.com/WzLYVg387U)! - fix(monkey/subtitle): subtitles uploaded via 115 may lose the sid
+
 ## 1.12.0
 
 ### Minor Changes
